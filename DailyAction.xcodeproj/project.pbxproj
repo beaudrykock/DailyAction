@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F7C14941E6E09D700E21B16 /* PhoneAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14931E6E09D700E21B16 /* PhoneAction.m */; };
+		9F7C14971E6E0BC300E21B16 /* EmailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14961E6E0BC300E21B16 /* EmailAction.m */; };
+		9F7C149A1E6E135400E21B16 /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14991E6E135400E21B16 /* Issue.m */; };
+		9F7C14A21E6E16EB00E21B16 /* ActionCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A11E6E16EB00E21B16 /* ActionCard.m */; };
+		9F7C14A41E6E171600E21B16 /* ActionCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7C14A31E6E171600E21B16 /* ActionCardView.xib */; };
+		9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */; };
+		9FAE76B21E61129200EE1378 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B11E61129200EE1378 /* main.m */; };
+		9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B41E61129200EE1378 /* AppDelegate.m */; };
+		9FAE76B81E61129200EE1378 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B71E61129200EE1378 /* MainViewController.m */; };
+		9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FAE76B91E61129200EE1378 /* Main.storyboard */; };
+		9FAE76BD1E61129200EE1378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FAE76BC1E61129200EE1378 /* Assets.xcassets */; };
+		9FAE76C01E61129200EE1378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FAE76BE1E61129200EE1378 /* LaunchScreen.storyboard */; };
+		9FC29C011E6DF9770070C43F /* UserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C001E6DF9770070C43F /* UserDataManager.m */; };
+		9FC29C051E6E065F0070C43F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C041E6E065F0070C43F /* User.m */; };
+		9FC29C081E6E06F40070C43F /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C071E6E06F40070C43F /* Action.m */; };
+		9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C0B1E6E07E20070C43F /* Opportunity.m */; };
+		C0122A38AF142BF90D8AC1FE /* Pods_DailyAction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A6015893ED16873D187425 /* Pods_DailyAction.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9F7C14921E6E09D700E21B16 /* PhoneAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAction.h; sourceTree = "<group>"; };
+		9F7C14931E6E09D700E21B16 /* PhoneAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAction.m; sourceTree = "<group>"; };
+		9F7C14951E6E0BC300E21B16 /* EmailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailAction.h; sourceTree = "<group>"; };
+		9F7C14961E6E0BC300E21B16 /* EmailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailAction.m; sourceTree = "<group>"; };
+		9F7C14981E6E135400E21B16 /* Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Issue.h; sourceTree = "<group>"; };
+		9F7C14991E6E135400E21B16 /* Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Issue.m; sourceTree = "<group>"; };
+		9F7C14A01E6E16EB00E21B16 /* ActionCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCard.h; sourceTree = "<group>"; };
+		9F7C14A11E6E16EB00E21B16 /* ActionCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCard.m; sourceTree = "<group>"; };
+		9F7C14A31E6E171600E21B16 /* ActionCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCardView.xib; sourceTree = "<group>"; };
+		9F7C14A51E6E1C4000E21B16 /* OpportunityDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityDataManager.h; sourceTree = "<group>"; };
+		9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityDataManager.m; sourceTree = "<group>"; };
+		9FAE76AD1E61129200EE1378 /* DailyAction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyAction.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FAE76B11E61129200EE1378 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9FAE76B31E61129200EE1378 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9FAE76B41E61129200EE1378 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9FAE76B61E61129200EE1378 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		9FAE76B71E61129200EE1378 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		9FAE76BA1E61129200EE1378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9FAE76BC1E61129200EE1378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9FAE76BF1E61129200EE1378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9FAE76C11E61129200EE1378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FC29BFF1E6DF9770070C43F /* UserDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataManager.h; sourceTree = "<group>"; };
+		9FC29C001E6DF9770070C43F /* UserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataManager.m; sourceTree = "<group>"; };
+		9FC29C031E6E065F0070C43F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		9FC29C041E6E065F0070C43F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		9FC29C061E6E06F40070C43F /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		9FC29C071E6E06F40070C43F /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
+		9FC29C0A1E6E07E20070C43F /* Opportunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Opportunity.h; sourceTree = "<group>"; };
+		9FC29C0B1E6E07E20070C43F /* Opportunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Opportunity.m; sourceTree = "<group>"; };
+		AC0E4D801B2FD6AD4E8F277A /* Pods-DailyAction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAction.release.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction.release.xcconfig"; sourceTree = "<group>"; };
+		CCE2DB3B6707048971D37BE7 /* Pods-DailyAction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAction.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction.debug.xcconfig"; sourceTree = "<group>"; };
+		F4A6015893ED16873D187425 /* Pods_DailyAction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyAction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FAE76AA1E61129200EE1378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0122A38AF142BF90D8AC1FE /* Pods_DailyAction.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		925BA054FC5B755DBB4577BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4A6015893ED16873D187425 /* Pods_DailyAction.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F7C14A81E6E1CB300E21B16 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9FAE76B61E61129200EE1378 /* MainViewController.h */,
+				9FAE76B71E61129200EE1378 /* MainViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9F7C14A91E6E1CBC00E21B16 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F7C14A01E6E16EB00E21B16 /* ActionCard.h */,
+				9F7C14A11E6E16EB00E21B16 /* ActionCard.m */,
+				9F7C14A31E6E171600E21B16 /* ActionCardView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9FAE76A41E61129200EE1378 = {
+			isa = PBXGroup;
+			children = (
+				9FAE76AF1E61129200EE1378 /* DailyAction */,
+				9FAE76AE1E61129200EE1378 /* Products */,
+				A180ED4C9D8712A8FFBEB965 /* Pods */,
+				925BA054FC5B755DBB4577BB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9FAE76AE1E61129200EE1378 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FAE76AD1E61129200EE1378 /* DailyAction.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FAE76AF1E61129200EE1378 /* DailyAction */ = {
+			isa = PBXGroup;
+			children = (
+				9FAE76B31E61129200EE1378 /* AppDelegate.h */,
+				9FAE76B41E61129200EE1378 /* AppDelegate.m */,
+				9F7C14A81E6E1CB300E21B16 /* View Controllers */,
+				9F7C14A91E6E1CBC00E21B16 /* Views */,
+				9FAE76B91E61129200EE1378 /* Main.storyboard */,
+				9FC29BFF1E6DF9770070C43F /* UserDataManager.h */,
+				9FC29C001E6DF9770070C43F /* UserDataManager.m */,
+				9F7C14A51E6E1C4000E21B16 /* OpportunityDataManager.h */,
+				9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */,
+				9FC29C091E6E07110070C43F /* Models */,
+				9FAE76BC1E61129200EE1378 /* Assets.xcassets */,
+				9FAE76BE1E61129200EE1378 /* LaunchScreen.storyboard */,
+				9FAE76C11E61129200EE1378 /* Info.plist */,
+				9FAE76B01E61129200EE1378 /* Supporting Files */,
+			);
+			path = DailyAction;
+			sourceTree = "<group>";
+		};
+		9FAE76B01E61129200EE1378 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FAE76B11E61129200EE1378 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FC29C091E6E07110070C43F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9FC29C061E6E06F40070C43F /* Action.h */,
+				9FC29C071E6E06F40070C43F /* Action.m */,
+				9FC29C031E6E065F0070C43F /* User.h */,
+				9FC29C041E6E065F0070C43F /* User.m */,
+				9FC29C0A1E6E07E20070C43F /* Opportunity.h */,
+				9FC29C0B1E6E07E20070C43F /* Opportunity.m */,
+				9F7C14921E6E09D700E21B16 /* PhoneAction.h */,
+				9F7C14931E6E09D700E21B16 /* PhoneAction.m */,
+				9F7C14951E6E0BC300E21B16 /* EmailAction.h */,
+				9F7C14961E6E0BC300E21B16 /* EmailAction.m */,
+				9F7C14981E6E135400E21B16 /* Issue.h */,
+				9F7C14991E6E135400E21B16 /* Issue.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A180ED4C9D8712A8FFBEB965 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCE2DB3B6707048971D37BE7 /* Pods-DailyAction.debug.xcconfig */,
+				AC0E4D801B2FD6AD4E8F277A /* Pods-DailyAction.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FAE76AC1E61129200EE1378 /* DailyAction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FAE76C41E61129200EE1378 /* Build configuration list for PBXNativeTarget "DailyAction" */;
+			buildPhases = (
+				06EDC585B44622589461DD1B /* [CP] Check Pods Manifest.lock */,
+				9FAE76A91E61129200EE1378 /* Sources */,
+				9FAE76AA1E61129200EE1378 /* Frameworks */,
+				9FAE76AB1E61129200EE1378 /* Resources */,
+				E9ACF64BA84A3492FBA82D79 /* [CP] Embed Pods Frameworks */,
+				6129220AC7831E6C25552B7F /* [CP] Copy Pods Resources */,
+				9FC29C021E6DFAD20070C43F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyAction;
+			productName = DailyAction;
+			productReference = 9FAE76AD1E61129200EE1378 /* DailyAction.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FAE76A51E61129200EE1378 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Beaudry Kock";
+				TargetAttributes = {
+					9FAE76AC1E61129200EE1378 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Z362V38924;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9FAE76A81E61129200EE1378 /* Build configuration list for PBXProject "DailyAction" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9FAE76A41E61129200EE1378;
+			productRefGroup = 9FAE76AE1E61129200EE1378 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FAE76AC1E61129200EE1378 /* DailyAction */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FAE76AB1E61129200EE1378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FAE76C01E61129200EE1378 /* LaunchScreen.storyboard in Resources */,
+				9FAE76BD1E61129200EE1378 /* Assets.xcassets in Resources */,
+				9F7C14A41E6E171600E21B16 /* ActionCardView.xib in Resources */,
+				9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06EDC585B44622589461DD1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6129220AC7831E6C25552B7F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FC29C021E6DFAD20070C43F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e8b60c2295893496a6c9dd6353a7b1be4044a213 f722ab468ed4342807b5e020b4ce351d3e8c49cc523f1498e31ce97492d271c2";
+		};
+		E9ACF64BA84A3492FBA82D79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FAE76A91E61129200EE1378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F7C14941E6E09D700E21B16 /* PhoneAction.m in Sources */,
+				9FC29C011E6DF9770070C43F /* UserDataManager.m in Sources */,
+				9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */,
+				9FAE76B81E61129200EE1378 /* MainViewController.m in Sources */,
+				9F7C14971E6E0BC300E21B16 /* EmailAction.m in Sources */,
+				9FC29C051E6E065F0070C43F /* User.m in Sources */,
+				9FC29C081E6E06F40070C43F /* Action.m in Sources */,
+				9F7C149A1E6E135400E21B16 /* Issue.m in Sources */,
+				9F7C14A21E6E16EB00E21B16 /* ActionCard.m in Sources */,
+				9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */,
+				9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */,
+				9FAE76B21E61129200EE1378 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9FAE76B91E61129200EE1378 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FAE76BA1E61129200EE1378 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9FAE76BE1E61129200EE1378 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FAE76BF1E61129200EE1378 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FAE76C21E61129200EE1378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9FAE76C31E61129200EE1378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9FAE76C51E61129200EE1378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCE2DB3B6707048971D37BE7 /* Pods-DailyAction.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z362V38924;
+				INFOPLIST_FILE = DailyAction/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Z362V38924.com.actionapp.actionapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9FAE76C61E61129200EE1378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC0E4D801B2FD6AD4E8F277A /* Pods-DailyAction.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z362V38924;
+				INFOPLIST_FILE = DailyAction/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Z362V38924.com.actionapp.actionapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FAE76A81E61129200EE1378 /* Build configuration list for PBXProject "DailyAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FAE76C21E61129200EE1378 /* Debug */,
+				9FAE76C31E61129200EE1378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FAE76C41E61129200EE1378 /* Build configuration list for PBXNativeTarget "DailyAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FAE76C51E61129200EE1378 /* Debug */,
+				9FAE76C61E61129200EE1378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FAE76A51E61129200EE1378 /* Project object */;
+}
