@@ -24,4 +24,11 @@
 {
     
 }
+
+- (Opportunity*)opportunityForDay:(NSInteger)day
+{
+    // TODO
+    return nil;
+}
+
 @end

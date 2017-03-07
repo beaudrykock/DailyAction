@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Realm/Realm.h>
+#import "Opportunity.h"
 
 @interface OpportunityDataManager : NSObject
 + (OpportunityDataManager *) sharedInstance;
+
+- (Opportunity*)opportunityForDay:(NSInteger)day;
 
 @end

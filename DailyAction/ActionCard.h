@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Opportunity.h"
 
 @interface ActionCard : UIView
 
@@ -15,5 +16,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *lb_ease;
 @property (nonatomic, strong) IBOutlet UILabel *actionTitle;
 @property (nonatomic, strong) IBOutlet UIScrollView *text;
+
+- (void)parameterizeWithOpportunity:(Opportunity*)opportunity;
 
 @end

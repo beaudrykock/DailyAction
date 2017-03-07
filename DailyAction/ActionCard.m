@@ -18,4 +18,9 @@
 }
 */
 
+- (void)parameterizeWithOpportunity:(Opportunity*)opportunity
+{
+    // TODO
+}
+
 @end
