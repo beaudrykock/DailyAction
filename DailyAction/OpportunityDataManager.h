@@ -14,5 +14,7 @@
 + (OpportunityDataManager *) sharedInstance;
 
 - (Opportunity*)opportunityForDay:(NSInteger)day;
+- (NSMutableArray*)opportunitiesWithCount:(NSInteger)count;
+- (NSInteger)countOfOpportunities;
 
 @end

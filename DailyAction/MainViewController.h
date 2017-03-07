@@ -14,6 +14,7 @@
 @interface MainViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *opportunityScrollView;
+@property (nonatomic, strong) NSMutableArray *opportunityViews;
 @property (nonatomic, strong) NSMutableArray *opportunities;
 
 @end

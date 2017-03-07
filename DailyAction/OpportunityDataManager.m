@@ -31,4 +31,10 @@
     return nil;
 }
 
+// returns total number of opportunities for the current issue area
+- (NSInteger)countOfOpportunities
+{
+    return 7; // TODO - complete with actual count of stored opportunities
+}
+
 @end
