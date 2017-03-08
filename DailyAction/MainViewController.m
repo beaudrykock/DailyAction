@@ -62,7 +62,7 @@
 
     // yesterday's opportunity needs to be positioned at slot 1 (from right) of content size
     frame = previous.frame;
-    frame.origin.x = (base_width*(oppCount-1))+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
+    frame.origin.x = (base_width*(oppCount-2))+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
     frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
     previous.frame = frame;
     
