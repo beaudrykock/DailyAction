@@ -32,9 +32,11 @@
     if (oppCount > OPPORTUNITIES_LIMIT)
         oppCount = OPPORTUNITIES_LIMIT;
     
-    // set size of scrollview x opportunity countr of current width
+    // set size of scrollview x opportunity count of current width
     self.opportunityScrollView.contentSize = CGSizeMake(self.opportunityScrollView.frame.size.width*oppCount, self.opportunityScrollView.frame.size.height);
-    self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*2.0, 0.0);
+    
+    // position scrollview at last page
+    self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0);
     
     self.opportunityViews = [NSMutableArray arrayWithCapacity:3];
     
@@ -45,10 +47,10 @@
     [current parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:oppCount-1]];
     
     // today's opportunity needs to be positioned at slot 0 (from right) of content size
-    float base = self.opportunityScrollView.frame.size.width;
+    float base_width = self.opportunityScrollView.frame.size.width;
     
     CGRect frame = current.frame;
-    frame.origin.x = (base*2.0)+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
+    frame.origin.x = (base_width*(oppCount-1))+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
     frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
     current.frame = frame;
     
@@ -60,7 +62,7 @@
 
     // yesterday's opportunity needs to be positioned at slot 1 (from right) of content size
     frame = previous.frame;
-    frame.origin.x = base+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
+    frame.origin.x = (base_width*(oppCount-1))+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
     frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
     previous.frame = frame;
     
