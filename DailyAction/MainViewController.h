@@ -16,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UIScrollView *opportunityScrollView;
 @property (nonatomic, strong) NSMutableArray *opportunityViews;
 @property (nonatomic, strong) NSMutableArray *opportunities;
+@property (nonatomic, strong) NSMutableDictionary *opportunityViewTags;
 
 @end
 
