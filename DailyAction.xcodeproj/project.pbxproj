@@ -10,8 +10,7 @@
 		9F7C14941E6E09D700E21B16 /* PhoneAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14931E6E09D700E21B16 /* PhoneAction.m */; };
 		9F7C14971E6E0BC300E21B16 /* EmailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14961E6E0BC300E21B16 /* EmailAction.m */; };
 		9F7C149A1E6E135400E21B16 /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14991E6E135400E21B16 /* Issue.m */; };
-		9F7C14A21E6E16EB00E21B16 /* ActionCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A11E6E16EB00E21B16 /* ActionCard.m */; };
-		9F7C14A41E6E171600E21B16 /* ActionCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7C14A31E6E171600E21B16 /* ActionCardView.xib */; };
+		9F7C14A21E6E16EB00E21B16 /* OpportunityCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */; };
 		9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */; };
 		9FAE76B21E61129200EE1378 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B11E61129200EE1378 /* main.m */; };
 		9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B41E61129200EE1378 /* AppDelegate.m */; };
@@ -23,6 +22,7 @@
 		9FC29C051E6E065F0070C43F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C041E6E065F0070C43F /* User.m */; };
 		9FC29C081E6E06F40070C43F /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C071E6E06F40070C43F /* Action.m */; };
 		9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C0B1E6E07E20070C43F /* Opportunity.m */; };
+		9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */; };
 		A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A90EB0F91E6E63A1009078ED /* Utilities.m */; };
 		C0122A38AF142BF90D8AC1FE /* Pods_DailyAction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A6015893ED16873D187425 /* Pods_DailyAction.framework */; };
 /* End PBXBuildFile section */
@@ -34,9 +34,8 @@
 		9F7C14961E6E0BC300E21B16 /* EmailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailAction.m; sourceTree = "<group>"; };
 		9F7C14981E6E135400E21B16 /* Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Issue.h; sourceTree = "<group>"; };
 		9F7C14991E6E135400E21B16 /* Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Issue.m; sourceTree = "<group>"; };
-		9F7C14A01E6E16EB00E21B16 /* ActionCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCard.h; sourceTree = "<group>"; };
-		9F7C14A11E6E16EB00E21B16 /* ActionCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCard.m; sourceTree = "<group>"; };
-		9F7C14A31E6E171600E21B16 /* ActionCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCardView.xib; sourceTree = "<group>"; };
+		9F7C14A01E6E16EB00E21B16 /* OpportunityCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityCard.h; sourceTree = "<group>"; };
+		9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityCard.m; sourceTree = "<group>"; };
 		9F7C14A51E6E1C4000E21B16 /* OpportunityDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityDataManager.h; sourceTree = "<group>"; };
 		9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityDataManager.m; sourceTree = "<group>"; };
 		9FAE76AD1E61129200EE1378 /* DailyAction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyAction.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +56,7 @@
 		9FC29C071E6E06F40070C43F /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
 		9FC29C0A1E6E07E20070C43F /* Opportunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Opportunity.h; sourceTree = "<group>"; };
 		9FC29C0B1E6E07E20070C43F /* Opportunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Opportunity.m; sourceTree = "<group>"; };
+		9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpportunityCardView.xib; sourceTree = "<group>"; };
 		A90EB0F81E6E63A1009078ED /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		A90EB0F91E6E63A1009078ED /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		A90EB0FB1E6E63BD009078ED /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -97,9 +97,9 @@
 		9F7C14A91E6E1CBC00E21B16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9F7C14A01E6E16EB00E21B16 /* ActionCard.h */,
-				9F7C14A11E6E16EB00E21B16 /* ActionCard.m */,
-				9F7C14A31E6E171600E21B16 /* ActionCardView.xib */,
+				9F7C14A01E6E16EB00E21B16 /* OpportunityCard.h */,
+				9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */,
+				9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -247,8 +247,8 @@
 			files = (
 				9FAE76C01E61129200EE1378 /* LaunchScreen.storyboard in Resources */,
 				9FAE76BD1E61129200EE1378 /* Assets.xcassets in Resources */,
-				9F7C14A41E6E171600E21B16 /* ActionCardView.xib in Resources */,
 				9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */,
+				9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +328,7 @@
 				9FC29C051E6E065F0070C43F /* User.m in Sources */,
 				9FC29C081E6E06F40070C43F /* Action.m in Sources */,
 				9F7C149A1E6E135400E21B16 /* Issue.m in Sources */,
-				9F7C14A21E6E16EB00E21B16 /* ActionCard.m in Sources */,
+				9F7C14A21E6E16EB00E21B16 /* OpportunityCard.m in Sources */,
 				9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */,
 				9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */,
 				A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */,

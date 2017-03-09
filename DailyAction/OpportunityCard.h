@@ -1,5 +1,5 @@
 //
-//  ActionCardView.h
+//  OpportunityCard
 //  DailyAction
 //
 //  Created by Beaudry Kock on 3/6/17.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Opportunity.h"
 
-@interface ActionCard : UIView
+@interface OpportunityCard : UIView
 
 @property (nonatomic, strong) IBOutlet UILabel *lb_actionsTaken;
 @property (nonatomic, strong) IBOutlet UILabel *lb_criticality;

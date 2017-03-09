@@ -54,7 +54,7 @@
     
     // Setting up Opportunity cards
     // 1. Create current view and previous
-    ActionCard* current = [[[NSBundle mainBundle] loadNibNamed:@"ActionCardView" owner:self options:nil] objectAtIndex:0];
+    OpportunityCard* current = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
     current.tag = [self currentPage];
     [current parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:oppCount-1]];
     
@@ -69,7 +69,7 @@
     [self.opportunityViews addObject:current];
     [self.opportunityViewTags setObject:current forKey:[NSNumber numberWithInteger:current.tag]];
     
-    ActionCard* previous = [[[NSBundle mainBundle] loadNibNamed:@"ActionCardView" owner:self options:nil] objectAtIndex:0];
+    OpportunityCard* previous = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
     previous.tag = ([self currentPage]-1);
     [previous parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:oppCount-2]];
     
@@ -120,7 +120,7 @@
 {
     float base_width = self.opportunityScrollView.frame.size.width;
     
-    ActionCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"ActionCardView" owner:self options:nil] objectAtIndex:0];
+    OpportunityCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
     opportunity.tag = page*10;
     [opportunity parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:page]];
     

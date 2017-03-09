@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ActionCard.h"
+#import "OpportunityCard.h"
 #import "OpportunityDataManager.h"
 #import "Constants.h"
 
