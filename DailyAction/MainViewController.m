@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MainViewController ()
 
@@ -110,6 +111,8 @@
     frame.origin.x =  (base_width*page)+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
     frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
     opportunity.frame = frame;
+    
+    opportunity.layer.cornerRadius = 15.0;
     
     [self.opportunityScrollView addSubview:opportunity];
     
