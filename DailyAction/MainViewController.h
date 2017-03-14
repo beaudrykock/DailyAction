@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *opportunityViews;
 @property (nonatomic, strong) NSMutableArray *opportunities;
 @property (nonatomic, strong) NSMutableDictionary *opportunityViewTags;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
 @end
 

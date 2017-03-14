@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +23,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="10000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-se-Cmn">
+                            <imageView userInteractionEnabled="NO" tag="10000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-se-Cmn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lj8-se-Cmn" secondAttribute="height" multiplier="375:667" id="5pL-4X-jB4"/>
+                                </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
                                 <rect key="frame" x="0.0" y="41" width="375" height="566"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Bv7-CQ-bZJ"/>
@@ -35,21 +39,30 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PxU-y5-CZh"/>
                                 </connections>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-gh-JQ5">
+                                <rect key="frame" x="168" y="607" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="HSo-i2-TWU"/>
+                                </constraints>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lj8-se-Cmn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="9ej-Yh-WoW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lj8-se-Cmn" secondAttribute="trailing" constant="-16" id="BGE-yl-DwJ"/>
-                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="centerX" secondItem="lj8-se-Cmn" secondAttribute="centerX" id="ClR-se-hpB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lj8-se-Cmn" secondAttribute="bottom" id="L12-cq-b6G"/>
-                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="centerY" secondItem="lj8-se-Cmn" secondAttribute="centerY" id="RYs-MA-jfO"/>
-                            <constraint firstItem="lj8-se-Cmn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="f3e-l8-PMu"/>
+                            <constraint firstItem="lj8-se-Cmn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="42S-eN-WPp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0P1-Rk-K7m" secondAttribute="trailing" constant="-16" id="4qa-Lh-fk7"/>
+                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="9DU-hZ-azx"/>
+                            <constraint firstItem="BzM-gh-JQ5" firstAttribute="centerX" secondItem="0P1-Rk-K7m" secondAttribute="centerX" id="Inv-4s-kgh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="lessThanOrEqual" secondItem="BzM-gh-JQ5" secondAttribute="bottom" constant="52" id="adY-F5-d6x"/>
+                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="nDB-OG-76P"/>
+                            <constraint firstItem="lj8-se-Cmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nma-wg-Yk3"/>
+                            <constraint firstItem="BzM-gh-JQ5" firstAttribute="top" secondItem="0P1-Rk-K7m" secondAttribute="bottom" id="x23-zG-KGz"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="opportunityScrollView" destination="0P1-Rk-K7m" id="Gwe-7D-Z0k"/>
+                        <outlet property="pageControl" destination="BzM-gh-JQ5" id="tOa-Ew-Dc8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -30,6 +30,7 @@
     
     self.opportunityViews = [NSMutableArray arrayWithCapacity:10];
     self.opportunityViewTags = [NSMutableDictionary dictionaryWithCapacity:10];
+    self.opportunityScrollView.showsHorizontalScrollIndicator = NO;
 }
 
 - (void)refreshOpportunityViews
@@ -38,6 +39,10 @@
     
     if (oppCount > OPPORTUNITIES_LIMIT)
         oppCount = OPPORTUNITIES_LIMIT;
+    
+    self.pageControl.numberOfPages = oppCount;
+    
+    
     
     // clear existing views
     for (UIView *view in self.opportunityScrollView.subviews)
@@ -50,6 +55,8 @@
     
     // position scrollview at last page
     self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0);
+    
+    self.pageControl.currentPage = [self currentPage];
     
     // Setting up Opportunity cards
     [self createOpportunityViewAtPage: [self currentPage]];
@@ -66,9 +73,12 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
-//    NSLog(@"page = %lu", [self currentPage]);
+    NSLog(@"page = %lu", [self currentPage]);
+    
+    self.pageControl.currentPage = [self currentPage];
     
     if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
+    
         return;
     }
     else {
@@ -91,7 +101,7 @@
     float base_width = self.opportunityScrollView.frame.size.width;
     
     OpportunityCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
-    opportunity.tag = page*10;
+    opportunity.tag = page;
     [opportunity parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:page]];
     
     CGRect frame = opportunity.frame;
