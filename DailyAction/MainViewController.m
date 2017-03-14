@@ -51,39 +51,9 @@
     // position scrollview at last page
     self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0);
     
-    
     // Setting up Opportunity cards
-    // 1. Create current view and previous
-    OpportunityCard* current = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
-    current.tag = [self currentPage];
-    [current parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:oppCount-1]];
-    
-    // today's opportunity needs to be positioned at slot 0 (from right) of content size
-    float base_width = self.opportunityScrollView.frame.size.width;
-    
-    CGRect frame = current.frame;
-    frame.origin.x = (base_width*(oppCount-1))+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
-    frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
-    current.frame = frame;
-    
-    [self.opportunityViews addObject:current];
-    [self.opportunityViewTags setObject:current forKey:[NSNumber numberWithInteger:current.tag]];
-    
-    OpportunityCard* previous = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
-    previous.tag = ([self currentPage]-1);
-    [previous parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:oppCount-2]];
-    
-    // yesterday's opportunity needs to be positioned at slot 1 (from right) of content size
-    frame = previous.frame;
-    frame.origin.x = (base_width*(oppCount-2))+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
-    frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
-    previous.frame = frame;
-    
-    [self.opportunityViews addObject:previous];
-    [self.opportunityViewTags setObject:previous forKey:[NSNumber numberWithInteger:previous.tag]];
-    
-    [self.opportunityScrollView addSubview: self.opportunityViews[TODAY]];
-    [self.opportunityScrollView addSubview: self.opportunityViews[YESTERDAY]];
+    [self createOpportunityViewAtPage: [self currentPage]];
+    [self createOpportunityViewAtPage: [self currentPage]-1];
 
 }
 
@@ -96,7 +66,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
-    NSLog(@"page = %lu", [self currentPage]);
+//    NSLog(@"page = %lu", [self currentPage]);
     
     if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
         return;
@@ -125,6 +95,8 @@
     [opportunity parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:page]];
     
     CGRect frame = opportunity.frame;
+    frame.size.width = base_width-20.0;
+    frame.size.height = self.opportunityScrollView.frame.size.height;
     frame.origin.x =  (base_width*page)+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
     frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
     opportunity.frame = frame;

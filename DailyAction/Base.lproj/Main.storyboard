@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,19 +22,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="10000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-se-Cmn">
+                            <imageView userInteractionEnabled="NO" tag="10000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lj8-se-Cmn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
                                 <rect key="frame" x="0.0" y="41" width="375" height="566"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Bv7-CQ-bZJ"/>
+                                    <constraint firstAttribute="height" constant="566" id="wnx-kR-55A"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PxU-y5-CZh"/>
                                 </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lj8-se-Cmn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="9ej-Yh-WoW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lj8-se-Cmn" secondAttribute="trailing" constant="-16" id="BGE-yl-DwJ"/>
+                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="centerX" secondItem="lj8-se-Cmn" secondAttribute="centerX" id="ClR-se-hpB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lj8-se-Cmn" secondAttribute="bottom" id="L12-cq-b6G"/>
+                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="centerY" secondItem="lj8-se-Cmn" secondAttribute="centerY" id="RYs-MA-jfO"/>
+                            <constraint firstItem="lj8-se-Cmn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="f3e-l8-PMu"/>
+                        </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
