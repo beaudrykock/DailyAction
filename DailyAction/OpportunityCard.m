@@ -7,6 +7,7 @@
 //
 
 #import "OpportunityCard.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation OpportunityCard
 
@@ -21,6 +22,8 @@
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity
 {
     // TODO
+    self.btn_action.layer.cornerRadius = 15.0;
+    self.inner_container.layer.cornerRadius = 15.0;
 }
 
 @end

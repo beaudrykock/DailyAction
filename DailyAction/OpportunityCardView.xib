@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OpportunityCard">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="OpportunityCard">
             <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -150,6 +150,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="actionTitle" destination="UWJ-wU-fgJ" id="wpm-jE-EXn"/>
+                <outlet property="btn_action" destination="qaV-L2-9Tr" id="GU9-Ja-ZNZ"/>
+                <outlet property="inner_container" destination="0Cc-br-3rx" id="9Cc-O8-d9E"/>
                 <outlet property="lb_actionsTaken" destination="c4J-Di-qYI" id="zcP-kh-ZZH"/>
                 <outlet property="lb_criticality" destination="sIp-jT-kef" id="OpM-w2-A3C"/>
                 <outlet property="lb_ease" destination="FHK-8W-slc" id="9SK-qn-Ktx"/>
