@@ -10,12 +10,14 @@
 
 @implementation ActionDate
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    self.date_container.layer.cornerRadius = 15.0;
+    self.backgroundColor = [UIColor clearColor];
 }
-*/
+
 
 @end

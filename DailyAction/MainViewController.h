@@ -10,6 +10,7 @@
 #import "OpportunityCard.h"
 #import "OpportunityDataManager.h"
 #import "Constants.h"
+#import "ActionDate.h"
 
 @interface MainViewController : UIViewController <UIScrollViewDelegate>
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) NSMutableArray *opportunities;
 @property (nonatomic, strong) NSMutableDictionary *opportunityViewTags;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, assign) NSInteger lastPage;
+@property (nonatomic, strong) ActionDate *titleView;
 
 @end
 

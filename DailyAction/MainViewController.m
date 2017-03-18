@@ -22,7 +22,8 @@
     [self setup];
     
     [self refreshOpportunityViews];
-    // 
+    
+    [self loadTitleView];
 }
 
 - (void)setup
@@ -32,6 +33,20 @@
     self.opportunityViews = [NSMutableArray arrayWithCapacity:10];
     self.opportunityViewTags = [NSMutableDictionary dictionaryWithCapacity:10];
     self.opportunityScrollView.showsHorizontalScrollIndicator = NO;
+    
+  
+}
+
+- (void)loadTitleView
+{
+     self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"ActionDateView" owner:self options:nil] objectAtIndex:0];
+    
+    CGRect frame = self.titleView.frame;
+    frame.origin.x = (self.view.frame.size.width-self.titleView.frame.size.width)/2.0;
+    frame.origin.y = 16.0;
+    self.titleView.frame = frame;
+    
+    [self.view addSubview:self.titleView];
 }
 
 - (void)refreshOpportunityViews
@@ -58,6 +73,8 @@
     self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0);
     
     self.pageControl.currentPage = [self currentPage];
+    
+    self.lastPage = [self currentPage];
     
     // Setting up Opportunity cards
     [self createOpportunityViewAtPage: [self currentPage]];
@@ -90,6 +107,19 @@
             [self createOpportunityViewAtPage:[self currentPage]-1];
         }
     }
+    
+    // now check if we're on a new page, in which case the title view must be updated
+    if ([self currentPage] != _lastPage)
+    {
+        _lastPage = [self currentPage];
+        
+        [self parameterizeTitle];
+    }
+}
+
+- (void)parameterizeTitle
+{
+    // TODO
 }
 
 - (NSInteger)currentPage
