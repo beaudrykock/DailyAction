@@ -40,6 +40,7 @@
 - (void)loadTitleView
 {
      self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"ActionDateView" owner:self options:nil] objectAtIndex:0];
+    self.titleView.date_container.layer.cornerRadius = 15.0;
     
     CGRect frame = self.titleView.frame;
     frame.origin.x = (self.view.frame.size.width-self.titleView.frame.size.width)/2.0;
@@ -136,10 +137,9 @@
     [opportunity parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:page]];
     
     CGRect frame = opportunity.frame;
-    frame.size.width = base_width-20.0;
     frame.size.height = self.opportunityScrollView.frame.size.height;
     frame.origin.x =  (base_width*page)+((self.opportunityScrollView.frame.size.width - frame.size.width)/2.0);
-    frame.origin.y = (self.opportunityScrollView.frame.size.height - frame.size.height)/2.0;
+    frame.origin.y = 0.0;
     opportunity.frame = frame;
     
     opportunity.layer.cornerRadius = 15.0;

@@ -32,8 +32,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
                                 <rect key="frame" x="0.0" y="99" width="375" height="508"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="508" id="0Eu-Bh-36X"/>
                                     <constraint firstAttribute="width" constant="375" id="Bv7-CQ-bZJ"/>
-                                    <constraint firstAttribute="height" constant="566" id="wnx-kR-55A"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PxU-y5-CZh"/>
