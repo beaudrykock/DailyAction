@@ -21,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, assign) NSInteger lastPage;
 @property (nonatomic, strong) ActionDate *titleView;
+@property (nonatomic, strong) IBOutlet UIButton *btn_changeLocation;
 
 @end
 

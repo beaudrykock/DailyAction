@@ -33,7 +33,7 @@
     self.opportunityViews = [NSMutableArray arrayWithCapacity:10];
     self.opportunityViewTags = [NSMutableDictionary dictionaryWithCapacity:10];
     self.opportunityScrollView.showsHorizontalScrollIndicator = NO;
-    
+    self.btn_changeLocation.layer.cornerRadius = 15.0;
   
 }
 
@@ -148,6 +148,11 @@
     
     [self.opportunityViews addObject:opportunity];
     [self.opportunityViewTags setObject:opportunity forKey:[NSNumber numberWithInteger:opportunity.tag]];
+    
+}
+
+- (IBAction)changeLocation:(id)sender
+{
     
 }
 
