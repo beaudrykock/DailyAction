@@ -29,8 +29,8 @@
                                     <constraint firstAttribute="width" secondItem="lj8-se-Cmn" secondAttribute="height" multiplier="375:667" id="5pL-4X-jB4"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
-                                <rect key="frame" x="0.0" y="99" width="375" height="508"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-Rk-K7m">
+                                <rect key="frame" x="0.0" y="104" width="375" height="508"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="508" id="0Eu-Bh-36X"/>
                                     <constraint firstAttribute="width" constant="375" id="Bv7-CQ-bZJ"/>
@@ -39,7 +39,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PxU-y5-CZh"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-gh-JQ5">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-gh-JQ5">
                                 <rect key="frame" x="168" y="607" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="HSo-i2-TWU"/>
@@ -52,10 +52,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0P1-Rk-K7m" secondAttribute="trailing" constant="-16" id="4qa-Lh-fk7"/>
                             <constraint firstItem="0P1-Rk-K7m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="9DU-hZ-azx"/>
                             <constraint firstItem="BzM-gh-JQ5" firstAttribute="centerX" secondItem="0P1-Rk-K7m" secondAttribute="centerX" id="Inv-4s-kgh"/>
+                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="84" id="YBI-o6-HBQ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="lessThanOrEqual" secondItem="BzM-gh-JQ5" secondAttribute="bottom" constant="52" id="adY-F5-d6x"/>
-                            <constraint firstItem="0P1-Rk-K7m" firstAttribute="top" secondItem="lj8-se-Cmn" secondAttribute="bottom" constant="-568" id="lAG-Wv-CMJ"/>
                             <constraint firstItem="lj8-se-Cmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nma-wg-Yk3"/>
-                            <constraint firstItem="BzM-gh-JQ5" firstAttribute="top" secondItem="0P1-Rk-K7m" secondAttribute="bottom" id="x23-zG-KGz"/>
+                            <constraint firstItem="BzM-gh-JQ5" firstAttribute="top" secondItem="0P1-Rk-K7m" secondAttribute="bottom" constant="-5" id="x23-zG-KGz"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

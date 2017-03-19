@@ -44,7 +44,7 @@
     
     CGRect frame = self.titleView.frame;
     frame.origin.x = (self.view.frame.size.width-self.titleView.frame.size.width)/2.0;
-    frame.origin.y = 16.0;
+    frame.origin.y = 26.0;
     self.titleView.frame = frame;
     
     [self.view addSubview:self.titleView];
