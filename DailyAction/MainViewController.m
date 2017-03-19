@@ -64,8 +64,6 @@
     
     self.pageControl.numberOfPages = oppCount;
     
-    
-    
     // clear existing views
     for (UIView *view in self.opportunityScrollView.subviews)
         [view removeFromSuperview];
