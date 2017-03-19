@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "511567027.206709"
+            timestampString = "511644120.382675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-refreshOpportunityViews"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-createOpportunityViewAtPage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DailyAction/MainViewController.m"
-            timestampString = "511590524.901349"
+            filePath = "DailyAction/UserDataManager.m"
+            timestampString = "511639750.228243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-createOpportunityViewAtPage:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-updateUserVotingZipcode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

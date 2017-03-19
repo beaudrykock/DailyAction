@@ -12,11 +12,17 @@
 #import "Utilities.h"
 //#import <Crashlytics/Crashlytics.h>
 #import <Realm/Realm.h>
+#import "INTULocationManager.h"
 
 @interface UserDataManager : NSObject
 + (UserDataManager *) sharedInstance;
 
-- (void)storeUserVotingZipcode:(NSString*)zipcode;
+- (void)updateUserVotingZipcode:(NSString*)zipcode;
+- (void)updateUserVotingLocalityFromZipcode:(NSString*)zipcode;
+- (NSString*)userVotingLocality;
+- (NSString*)userVotingZip;
+- (NSString*)userLocationSource;
+- (void)updateUserLocationSource:(NSString*)source;
 
 //
 //- (NSInteger)lastPointsAwardForRider;

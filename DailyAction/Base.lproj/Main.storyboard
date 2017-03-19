@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="height" constant="37" id="HSo-i2-TWU"/>
                                 </constraints>
                             </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We think you're a San Francisco voter (94301)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWV-Cq-PnV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Updating your voting location..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWV-Cq-PnV">
                                 <rect key="frame" x="34" y="633" width="249" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
@@ -82,6 +82,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btn_changeLocation" destination="hkv-KB-PWb" id="wgL-wP-krn"/>
+                        <outlet property="lb_votingLocation" destination="EWV-Cq-PnV" id="K3g-p5-xGN"/>
                         <outlet property="opportunityScrollView" destination="0P1-Rk-K7m" id="Gwe-7D-Z0k"/>
                         <outlet property="pageControl" destination="BzM-gh-JQ5" id="tOa-Ew-Dc8"/>
                     </connections>

@@ -34,6 +34,9 @@
     self.opportunityViewTags = [NSMutableDictionary dictionaryWithCapacity:10];
     self.opportunityScrollView.showsHorizontalScrollIndicator = NO;
     self.btn_changeLocation.layer.cornerRadius = 4.0;
+    
+    // subscribe to notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserVotingLocation) name:UPDATED_USER_LOCATION object:nil];
   
 }
 
@@ -181,8 +184,11 @@
                                {
                                    UITextField *zipcode = alertController.textFields.firstObject;
                                    
-                                   [[UserDataManager sharedInstance] storeUserVotingZipcode:zipcode.text];
+                                   [[UserDataManager sharedInstance] updateUserVotingZipcode:zipcode.text];
+                                   [[UserDataManager sharedInstance] updateUserVotingLocalityFromZipcode:zipcode.text];
+                                   [[UserDataManager sharedInstance] updateUserLocationSource:MANUAL];
                                    
+                                   [self refreshUserVotingLocation];
                                }];
     
     [alertController addAction:cancelAction];
@@ -209,6 +215,23 @@
         {
             self.okAction.enabled = NO;
         }
+    }
+}
+
+// gets user locality and zipcode from User database and displays
+- (void)refreshUserVotingLocation
+{
+    NSString *userZipcode = [[UserDataManager sharedInstance] userVotingZip];
+    NSString *userLocality = [[UserDataManager sharedInstance] userVotingLocality];
+    NSString *userLocationSource = [[UserDataManager sharedInstance] userLocationSource];
+    
+    if ([userLocationSource isEqualToString:AUTO])
+    {
+        [self.lb_votingLocation setText:[NSString stringWithFormat:@"We think you're a %@ voter (%@)", userLocality, userZipcode]];
+    }
+    else
+    {
+        [self.lb_votingLocation setText:[NSString stringWithFormat:@"You're a %@ voter (%@)", userLocality, userZipcode]];
     }
 }
 
