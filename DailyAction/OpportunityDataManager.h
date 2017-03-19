@@ -19,5 +19,6 @@
 - (NSMutableArray*)opportunitiesWithCount:(NSInteger)count;
 - (NSInteger)countOfOpportunities;
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities;
+- (RLMResults<Opportunity*>*)opportunities;
 
 @end

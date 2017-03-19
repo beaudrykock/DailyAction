@@ -25,12 +25,13 @@
     
 }
 
-- (Opportunity*)opportunityForDay:(NSInteger)day
+- (RLMResults<Opportunity*>*)opportunities
 {
-    // get all opportunities for all issues in user prefs, sorted in date order descending
+    RLMRealm *realm = [RLMRealm defaultRealm];
     
-    // TODO
-    return nil;
+    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate > %@", [NSDate date]]];
+    
+    return opportunities;
 }
 
 // returns total number of opportunities for the current issue area

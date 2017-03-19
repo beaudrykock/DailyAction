@@ -82,7 +82,9 @@
     
     // Setting up Opportunity cards
     [self createOpportunityViewAtPage: [self currentPage]];
-    [self createOpportunityViewAtPage: [self currentPage]-1];
+    
+    if (oppCount>1)
+        [self createOpportunityViewAtPage: [self currentPage]-1];
 
 }
 
@@ -133,11 +135,13 @@
 
 - (void)createOpportunityViewAtPage:(NSInteger)page
 {
+    RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] opportunities];
+    
     float base_width = self.opportunityScrollView.frame.size.width;
     
     OpportunityCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
     opportunity.tag = page;
-    [opportunity parameterizeWithOpportunity:[[OpportunityDataManager sharedInstance] opportunityForDay:page]];
+    [opportunity parameterizeWithOpportunity:[opportunities objectAtIndex:page]];
     
     CGRect frame = opportunity.frame;
     frame.size.height = self.opportunityScrollView.frame.size.height;
