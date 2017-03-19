@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Realm/Realm.h>
 #import "Opportunity.h"
+#import "Constants.h"
+#import "Utilities.h"
 
 @interface OpportunityDataManager : NSObject
 + (OpportunityDataManager *) sharedInstance;
@@ -16,5 +18,6 @@
 - (Opportunity*)opportunityForDay:(NSInteger)day;
 - (NSMutableArray*)opportunitiesWithCount:(NSInteger)count;
 - (NSInteger)countOfOpportunities;
+- (void)createOpportunitiesWithData:(NSDictionary*)opportunities;
 
 @end

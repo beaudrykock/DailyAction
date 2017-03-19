@@ -12,15 +12,15 @@
 
 @interface Opportunity : RLMObject
 
-@property NSInteger opportunityID;
+@property NSNumber<RLMInt>* opportunityID;
 @property NSString * title;
 @property NSString * sponsor;
 @property NSDate * dueDate;
-@property NSInteger difficulty;
-@property NSInteger criticality;
+@property NSNumber<RLMInt>* difficulty;
+@property NSNumber<RLMInt>* criticality;
 @property NSString * summary;
 @property NSString * detail;
 @property Action * action;
-@property NSInteger parentIssueID;
+@property NSNumber<RLMInt>* parentIssueID;
 
 @end

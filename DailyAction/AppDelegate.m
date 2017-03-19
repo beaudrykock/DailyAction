@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Utilities.h"
 #import "UserDataManager.h"
+#import "CloudDataManager.h"
 
 @interface AppDelegate ()
 
@@ -19,9 +20,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-        [Fabric with:@[[Crashlytics class]]];
+    [Fabric with:@[[Crashlytics class]]];
     
-        [UserDataManager sharedInstance];
+    [UserDataManager sharedInstance];
+    
+    [CloudDataManager sharedInstance];
+    
+    [OpportunityDataManager sharedInstance];
     
     return YES;
 }

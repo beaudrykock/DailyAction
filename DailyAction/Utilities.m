@@ -60,6 +60,16 @@
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
++(NSDate*)dateFromUTCString:(NSString*)utcString
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'+'HH:mm"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSDate *date = [dateFormatter dateFromString:utcString];
+    
+    return date;
+}
+
 +(NSString*)dateStringForTodayMidnight
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

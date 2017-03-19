@@ -12,6 +12,7 @@
 + (UIImage*)imageWithAlpha: (float)alpha fromImage:(UIImage*)image;
 + (NSDate*)dateForTodayMidnight;
 + (NSString*)dateStringForTodayMidnight;
++ (NSDate*)dateFromUTCString:(NSString*)utcString;
 + (void)incrementLaunchCount;
 + (NSInteger)launchCount;
 + (void)recordDataRead;
