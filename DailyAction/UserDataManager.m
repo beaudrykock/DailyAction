@@ -131,6 +131,8 @@
             NSString *city = placemark.locality;
             
             [self updateUserVotingLocality:city];
+            
+             [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_USER_LOCATION object:nil];
         }
     }];
 }

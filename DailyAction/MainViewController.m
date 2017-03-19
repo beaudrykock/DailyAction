@@ -23,6 +23,8 @@
     
     [self refreshOpportunityViews];
     
+    [self refreshUserVotingLocation];
+    
     [self loadTitleView];
 }
 
@@ -225,13 +227,17 @@
     NSString *userLocality = [[UserDataManager sharedInstance] userVotingLocality];
     NSString *userLocationSource = [[UserDataManager sharedInstance] userLocationSource];
     
-    if ([userLocationSource isEqualToString:AUTO])
+    // only set if information already available
+    if (userZipcode && userLocality && userLocationSource)
     {
-        [self.lb_votingLocation setText:[NSString stringWithFormat:@"We think you're a %@ voter (%@)", userLocality, userZipcode]];
-    }
-    else
-    {
-        [self.lb_votingLocation setText:[NSString stringWithFormat:@"You're a %@ voter (%@)", userLocality, userZipcode]];
+        if ([userLocationSource isEqualToString:AUTO])
+        {
+            [self.lb_votingLocation setText:[NSString stringWithFormat:@"We think you're a %@ voter (%@)", userLocality, userZipcode]];
+        }
+        else
+        {
+            [self.lb_votingLocation setText:[NSString stringWithFormat:@"You're a %@ voter (%@)", userLocality, userZipcode]];
+        }
     }
 }
 
