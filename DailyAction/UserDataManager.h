@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 //#import "JSONParser.h"
 #import "User.h"
-//#import "Utilities.h"
+#import "Utilities.h"
 //#import <Crashlytics/Crashlytics.h>
 #import <Realm/Realm.h>
 
 @interface UserDataManager : NSObject
 + (UserDataManager *) sharedInstance;
+
+- (void)storeUserVotingZipcode:(NSString*)zipcode;
 
 //
 //- (NSInteger)lastPointsAwardForRider;

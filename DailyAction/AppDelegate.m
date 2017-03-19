@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Utilities.h"
+#import "UserDataManager.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
         [Fabric with:@[[Crashlytics class]]];
+    
+        [UserDataManager sharedInstance];
+    
     return YES;
 }
 

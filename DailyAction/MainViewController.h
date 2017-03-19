@@ -11,6 +11,7 @@
 #import "OpportunityDataManager.h"
 #import "Constants.h"
 #import "ActionDate.h"
+#import "UserDataManager.h"
 
 @interface MainViewController : UIViewController <UIScrollViewDelegate>
 
@@ -22,6 +23,7 @@
 @property (nonatomic, assign) NSInteger lastPage;
 @property (nonatomic, strong) ActionDate *titleView;
 @property (nonatomic, strong) IBOutlet UIButton *btn_changeLocation;
+@property (nonatomic, strong) UIAlertAction *okAction;
 
 @end
 

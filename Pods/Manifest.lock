@@ -17,6 +17,7 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
+  - INTULocationManager (4.2.0)
   - MBProgressHUD (1.0.0)
   - Realm (2.4.3):
     - Realm/Headers (= 2.4.3)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1)
   - Crashlytics
   - Fabric
+  - INTULocationManager
   - MBProgressHUD
   - Realm (~> 2.4)
   - SBJson (~> 4.0.1)
@@ -35,10 +37,11 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
   SBJson: af3137ccda22be3004487524da0a071c75d4251b
 
-PODFILE CHECKSUM: 7619ebd0c20324366ce48885f939c785f6b6fd1e
+PODFILE CHECKSUM: 590a2482344e797f048f45b29129afe30ed34b14
 
 COCOAPODS: 1.2.0

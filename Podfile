@@ -12,4 +12,5 @@ target 'DailyAction' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'MBProgressHUD'
+  pod 'INTULocationManager'
 end

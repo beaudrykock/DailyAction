@@ -23,7 +23,35 @@
 
 - (void)setup
 {
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (!user)
+    {
+        User *user = [[User alloc] init];
+        [Utilities createNewUDID];
+        user.userID = [Utilities UDID];
+        [realm beginWriteTransaction];
+        [realm addObject:user];
+        [realm commitWriteTransaction];
+    }
+ }
 
+- (void)storeUserVotingZipcode:(NSString*)zipcode
+{
+    // if a UDID exists and is not associated with a user, create a User object and add ID
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        user.zipcode = zipcode;
+        [realm beginWriteTransaction];
+        [realm addObject:user];
+        [realm commitWriteTransaction];
+    }
 }
 
 //
@@ -262,15 +290,15 @@
 //    return badgeAwards;
 //}
 //
-//- (Rider*)currentRiderInRealm:(RLMRealm*)realm
-//{
-//    RLMResults <Rider*> *riders = [Rider objectsInRealm: realm withPredicate:[NSPredicate predicateWithFormat:@"uuid = %@", [Utilities UDID]]];
-//    
-//    if (riders.count >= 1)
-//        return riders[0];
-//    
-//    return nil;
-//}
+- (User*)currentUserInRealm:(RLMRealm*)realm
+{
+    RLMResults <User*> *users = [User objectsInRealm: realm withPredicate:[NSPredicate predicateWithFormat:@"userID = %@", [Utilities UDID]]];
+    
+    if (users.count >= 1)
+        return users[0];
+    
+    return nil;
+}
 //
 //- (Level *)levelWithDescription:(NSString*)description inRealm: (RLMRealm*)realm
 //{

@@ -33,7 +33,7 @@
     self.opportunityViews = [NSMutableArray arrayWithCapacity:10];
     self.opportunityViewTags = [NSMutableDictionary dictionaryWithCapacity:10];
     self.opportunityScrollView.showsHorizontalScrollIndicator = NO;
-    self.btn_changeLocation.layer.cornerRadius = 15.0;
+    self.btn_changeLocation.layer.cornerRadius = 4.0;
   
 }
 
@@ -153,7 +153,63 @@
 
 - (IBAction)changeLocation:(id)sender
 {
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Where do you vote?"
+                                          message:@"Enter a 5-digit zipcode"
+                                          preferredStyle:UIAlertControllerStyleAlert];
     
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"e.g. 94301";
+         [textField addTarget:self
+                       action:@selector(alertTextFieldDidChange:)
+             forControlEvents:UIControlEventEditingChanged];
+     }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel action");
+                                   }];
+    
+    self.okAction = [UIAlertAction
+                               actionWithTitle:@"Update"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   UITextField *zipcode = alertController.textFields.firstObject;
+                                   
+                                   [[UserDataManager sharedInstance] storeUserVotingZipcode:zipcode.text];
+                                   
+                               }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:self.okAction];
+    self.okAction.enabled = NO;
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
+}
+- (void)alertTextFieldDidChange:(UITextField *)sender
+{
+    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+    if (alertController)
+    {
+        UITextField *login = alertController.textFields.firstObject;
+        
+        
+        NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+        if ([login.text rangeOfCharacterFromSet:notDigits].location == NSNotFound && login.text.length == 5)
+        {
+            self.okAction.enabled = YES;
+        }
+        else
+        {
+            self.okAction.enabled = NO;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

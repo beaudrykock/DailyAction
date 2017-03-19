@@ -10,7 +10,8 @@
 
 @property NSString *firstName;
 @property NSString *lastName;
-@property NSInteger userID;
+@property NSString *userID;
+@property NSString *zipcode;
 @property RLMArray<Action *><Action> *actionsTaken;
 
 // Insert code here to declare functionality of your managed object subclass
