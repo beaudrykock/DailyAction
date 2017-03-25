@@ -57,12 +57,17 @@
 
 - (void)refreshOpportunityViews
 {
-    NSInteger oppCount = [[OpportunityDataManager sharedInstance] countOfOpportunities];
+    NSInteger oppCount = [[OpportunityDataManager sharedInstance] countOfActedOnOpportunities]+1; // 1 extra for today's, if 0 or otherwise less than OPPORTUNITIES_LIMIT
     
     if (oppCount > OPPORTUNITIES_LIMIT)
         oppCount = OPPORTUNITIES_LIMIT;
     
     self.pageControl.numberOfPages = oppCount;
+    
+    if (oppCount <= 1)
+        self.pageControl.hidden = YES;
+    else
+        self.pageControl.hidden = NO;
     
     // clear existing views
     for (UIView *view in self.opportunityScrollView.subviews)
@@ -135,13 +140,25 @@
 
 - (void)createOpportunityViewAtPage:(NSInteger)page
 {
-    RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] opportunities];
+    
+    RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] actedOnOpportunities];
     
     float base_width = self.opportunityScrollView.frame.size.width;
     
     OpportunityCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
     opportunity.tag = page;
-    [opportunity parameterizeWithOpportunity:[opportunities objectAtIndex:page]];
+    
+    // for today's action
+    if (page == opportunities.count)
+    {
+        Opportunity *todaysOpp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
+        
+        [opportunity parameterizeWithOpportunity:todaysOpp];
+    }
+    else
+    {
+        [opportunity parameterizeWithOpportunity:[opportunities objectAtIndex:page]];
+    }
     
     CGRect frame = opportunity.frame;
     frame.size.height = self.opportunityScrollView.frame.size.height;

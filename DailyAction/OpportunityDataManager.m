@@ -25,21 +25,34 @@
     
 }
 
-- (RLMResults<Opportunity*>*)opportunities
+// most imminent opportunity that hasn't yet been acted on
+- (Opportunity*)todaysOpportunity
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+
+    RLMResults<Opportunity*> *opportunities = [[Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate >= %@ AND actedOn = NO", [NSDate date]]] sortedResultsUsingKeyPath:@"dueDate" ascending:NO];
+    
+    if (opportunities.count>0)
+        return [opportunities objectAtIndex:0];
+    
+    return nil;
+}
+
+- (RLMResults<Opportunity*>*)actedOnOpportunities
 {
     RLMRealm *realm = [RLMRealm defaultRealm];
     
-    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate > %@", [NSDate date]]];
+    RLMResults<Opportunity*> *opportunities = [[Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"actedOn = YES"]] sortedResultsUsingKeyPath:@"dueDate" ascending:NO];
     
     return opportunities;
 }
 
-// returns total number of opportunities for the current issue area
-- (NSInteger)countOfOpportunities
+// returns total number of opportunities for the current issue area, that have already been acted on
+- (NSInteger)countOfActedOnOpportunities
 {
     RLMRealm *realm = [RLMRealm defaultRealm];
     
-    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate > %@", [NSDate date]]];
+    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"actedOn = YES"]];
     
     return opportunities.count;
 }
@@ -70,6 +83,7 @@
             newOpp.opportunityID = opportunity[K_OPPORTUNITY_ID];
             newOpp.detail = opportunity[K_OPPORTUNITY_DETAIL];
             newOpp.dueDate = [Utilities dateFromUTCString:opportunity[K_OPPORTUNITY_DUE_DATE]];
+            newOpp.actedOn = NO;
             
             [realm beginWriteTransaction];
             [realm addObject:newOpp];

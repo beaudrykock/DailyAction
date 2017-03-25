@@ -16,11 +16,13 @@
 @property NSString * title;
 @property NSString * sponsor;
 @property NSDate * dueDate;
+@property NSDate * actedOnDate;
 @property NSNumber<RLMInt>* difficulty;
 @property NSNumber<RLMInt>* criticality;
 @property NSString * summary;
 @property NSString * detail;
 @property Action * action;
+@property BOOL actedOn;
 @property NSNumber<RLMInt>* parentIssueID;
 
 @end

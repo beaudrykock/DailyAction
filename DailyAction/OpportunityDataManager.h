@@ -15,10 +15,9 @@
 @interface OpportunityDataManager : NSObject
 + (OpportunityDataManager *) sharedInstance;
 
-- (Opportunity*)opportunityForDay:(NSInteger)day;
-- (NSMutableArray*)opportunitiesWithCount:(NSInteger)count;
-- (NSInteger)countOfOpportunities;
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities;
-- (RLMResults<Opportunity*>*)opportunities;
+- (RLMResults<Opportunity*>*)actedOnOpportunities;
+- (Opportunity*)todaysOpportunity;
+- (NSInteger)countOfActedOnOpportunities;
 
 @end
