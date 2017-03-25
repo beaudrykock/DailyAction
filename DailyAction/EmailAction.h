@@ -10,7 +10,7 @@
 
 @interface EmailAction : RLMObject
 
-@property NSInteger emailActionID;
+@property NSNumber<RLMInt>* emailActionID;
 @property NSString *emailAddress;
 @property NSString *emailName;
 @property NSString *emailScript;

@@ -13,11 +13,10 @@
 
 @interface Action : RLMObject
 
-@property NSInteger actionID;
-@property NSInteger type;
-@property PhoneAction *phoneAction;
-@property EmailAction *emailAction;
-@property NSInteger parentOpportunityID;
+@property NSNumber<RLMInt>* actionID;
+@property NSNumber<RLMInt>* actionType;
+@property NSNumber<RLMInt>* subActionID;
+@property NSNumber<RLMInt>* parentOpportunityID;
 
 @end
 

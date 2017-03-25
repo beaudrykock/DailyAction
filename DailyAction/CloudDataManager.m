@@ -30,6 +30,18 @@
                 [[OpportunityDataManager sharedInstance] createOpportunitiesWithData:opportunitiesDictionary];
             }];
             
+            [self downloadActionsWithDataOnSuccess:^(NSDictionary *actionsDictionary) {
+                [[OpportunityDataManager sharedInstance] createActionsWithData:actionsDictionary];
+            }];
+            
+            [self downloadEmailActionsWithDataOnSuccess:^(NSDictionary *actionsDictionary) {
+                [[OpportunityDataManager sharedInstance] createEmailActionsWithData:actionsDictionary];
+            }];
+            
+            [self downloadPhoneActionsWithDataOnSuccess:^(NSDictionary *actionsDictionary) {
+                [[OpportunityDataManager sharedInstance] createPhoneActionsWithData:actionsDictionary];
+            }];
+            
 //            [self syncCache];
         }
     }];
@@ -204,6 +216,48 @@
         NSLog(@"Failed to download opportunities from server with error %@", error.description);
     }];
 }
+
+- (void)downloadActionsWithDataOnSuccess:(void (^)(NSDictionary* actionsDictionary))success
+{
+    AFHTTPSessionManager *manager = [self newSessionManager];
+    
+    NSString *route = [NSString stringWithFormat:@"%@%@", URL_base, URL_action];
+    
+    [manager GET: route parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Failed to download opportunities from server with error %@", error.description);
+    }];
+}
+
+
+- (void)downloadPhoneActionsWithDataOnSuccess:(void (^)(NSDictionary* actionsDictionary))success
+{
+    AFHTTPSessionManager *manager = [self newSessionManager];
+    
+    NSString *route = [NSString stringWithFormat:@"%@%@", URL_base, URL_phone_action];
+    
+    [manager GET: route parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Failed to download opportunities from server with error %@", error.description);
+    }];
+}
+
+- (void)downloadEmailActionsWithDataOnSuccess:(void (^)(NSDictionary* actionsDictionary))success
+{
+    AFHTTPSessionManager *manager = [self newSessionManager];
+    
+    NSString *route = [NSString stringWithFormat:@"%@%@", URL_base, URL_email_action];
+    
+    [manager GET: route parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Failed to download opportunities from server with error %@", error.description);
+    }];
+}
+
+
 
 //- (void)downloadAllAgenciesFromServerWithDataOnSuccess:(void (^)(NSDictionary* agenciesDictionary))success  onFailure:(void (^)(NSError *))failure
 //{

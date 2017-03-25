@@ -27,7 +27,23 @@
 #define K_OPPORTUNITY_SUMMARY @"summary"
 #define K_OPPORTUNITY_DETAIL @"detail"
 #define K_OPPORTUNITY_ACTION_ID @"action_id"
-#define K_OPPORTUNITY_ISSUE_UD @"issue_id"
+#define K_OPPORTUNITY_ISSUE_ID @"issue_id"
+
+#define K_ACTION_ID @"id"
+#define K_ACTION_TYPE @"type"
+#define K_SUBACTION_ID @"subaction_id"
+
+#define K_PHONE_ACTION_ID @"id"
+#define K_PHONE_ACTION_NAME_TO_CALL @"name_to_call"
+#define K_PHONE_ACTION_SCRIPT @"script"
+#define K_PHONE_ACTION_ZIPCODE @"zip_code"
+#define K_PHONE_ACTION_PHONE_NUMBER @"phone"
+
+#define K_EMAIL_ACTION_ID @"id"
+#define K_EMAIL_ACTION_EMAIL @"email"
+#define K_EMAIL_ACTION_NAME_TO_EMAIL @"name_to_email"
+#define K_EMAIL_ACTION_SCRIPT @"script"
+#define K_EMAIL_ACTION_ZIPCODE @"zip_code"
 
 // CONSTANTS
 

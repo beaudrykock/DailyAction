@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Opportunity.h"
+#import "OpportunityDataManager.h"
 
 @interface OpportunityCard : UIView
 

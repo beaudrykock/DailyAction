@@ -25,6 +25,8 @@
     self.actionTitle.text = opportunity.title;
     self.btn_action.layer.cornerRadius = 15.0;
     self.inner_container.layer.cornerRadius = 15.0;
+    
+    
 }
 
 @end

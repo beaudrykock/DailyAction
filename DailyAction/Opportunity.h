@@ -13,6 +13,8 @@
 @interface Opportunity : RLMObject
 
 @property NSNumber<RLMInt>* opportunityID;
+@property NSNumber<RLMInt>* actionID;
+@property NSNumber<RLMInt>* issueID;
 @property NSString * title;
 @property NSString * sponsor;
 @property NSDate * dueDate;
@@ -21,8 +23,6 @@
 @property NSNumber<RLMInt>* criticality;
 @property NSString * summary;
 @property NSString * detail;
-@property Action * action;
 @property BOOL actedOn;
-@property NSNumber<RLMInt>* parentIssueID;
 
 @end

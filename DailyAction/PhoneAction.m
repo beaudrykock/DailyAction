@@ -10,4 +10,14 @@
 
 @implementation PhoneAction
 
++ (NSString *)primaryKey
+{
+    return @"phoneActionID";
+}
+
++ (NSDictionary *)defaultPropertyValues
+{
+    return @{@"phoneActionID": [[NSUUID UUID] UUIDString]};
+}
+
 @end

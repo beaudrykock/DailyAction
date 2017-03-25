@@ -10,4 +10,14 @@
 
 @implementation Opportunity
 
++ (NSString *)primaryKey
+{
+    return @"opportunityID";
+}
+
++ (NSDictionary *)defaultPropertyValues
+{
+    return @{@"opportunityID": [[NSUUID UUID] UUIDString]};
+}
+
 @end

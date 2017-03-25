@@ -10,4 +10,15 @@
 
 @implementation EmailAction
 
++ (NSString *)primaryKey
+{
+    return @"emailActionID";
+}
+
++ (NSDictionary *)defaultPropertyValues
+{
+    return @{@"emailActionID": [[NSUUID UUID] UUIDString]};
+}
+
+
 @end

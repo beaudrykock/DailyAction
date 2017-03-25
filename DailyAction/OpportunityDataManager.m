@@ -57,6 +57,28 @@
     return opportunities.count;
 }
 
+- (NSNumber*)actionTypeForOpportunityWithID:(NSInteger)opportunityID
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"opportunityID = %@", opportunityID]];
+    
+    if (opportunities.count >= 1)
+    {
+        NSNumber *actionID = opportunities[0].actionID;
+        RLMResults<Action*> *actions = [Action objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"actionID = %@", actionID]];
+        
+        if (actions.count>=1)
+        {
+            return actions[0].actionType;
+        }
+    }
+    
+    return @1000;
+}
+
+
+
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities
 {
     NSLog(@"Creating opportunities");
@@ -75,12 +97,15 @@
         {
             // create
             Opportunity *newOpp = [[Opportunity alloc] init];
+            newOpp.opportunityID = opportunity[K_OPPORTUNITY_ID];
             newOpp.title = opportunity[K_OPPORTUNITY_TITLE];
             newOpp.criticality = opportunity[K_OPPORTUNITY_CRITICALITY];
             newOpp.summary = opportunity[K_OPPORTUNITY_SUMMARY];
             newOpp.sponsor = opportunity[K_OPPORTUNITY_SPONSOR];
             newOpp.difficulty = opportunity[K_OPPORTUNITY_DIFFICULTY];
             newOpp.opportunityID = opportunity[K_OPPORTUNITY_ID];
+            newOpp.actionID = opportunity[K_OPPORTUNITY_ACTION_ID];
+            newOpp.issueID = opportunity[K_OPPORTUNITY_ISSUE_ID];
             newOpp.detail = opportunity[K_OPPORTUNITY_DETAIL];
             newOpp.dueDate = [Utilities dateFromUTCString:opportunity[K_OPPORTUNITY_DUE_DATE]];
             newOpp.actedOn = NO;
@@ -99,6 +124,115 @@
         NSLog(@"Opp = %@", opp.description);
     }
 }
+
+- (void)createActionsWithData:(NSDictionary*)actions
+{
+    NSLog(@"Creating actions");
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    for (NSDictionary *action in actions)
+    {
+        NSNumber *actionID = action[K_ACTION_ID];
+        
+        // check if exists
+        RLMResults<Action*> *unsyncedActions = [Action objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"actionID = %@", actionID]];
+        
+        if (unsyncedActions.count == 0)
+        {
+            // create
+            Action *newAction = [[Action alloc] init];
+            newAction.actionID = action[K_ACTION_ID];
+            newAction.actionType = action[K_ACTION_TYPE];
+            newAction.subActionID = action[K_SUBACTION_ID];
+            
+            [realm beginWriteTransaction];
+            [realm addObject:newAction];
+            [realm commitWriteTransaction];
+        }
+    }
+    
+    // diagnostics
+    RLMResults<Action*> *actionDiags = [Action allObjects];
+    for (Action *action in actionDiags)
+    {
+        NSLog(@"Action = %@", action.description);
+    }
+}
+
+- (void)createEmailActionsWithData:(NSDictionary*)emailActions
+{
+    NSLog(@"Creating email actions");
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    for (NSDictionary *emailAction in emailActions)
+    {
+        NSNumber *emailActionID = emailAction[K_EMAIL_ACTION_ID];
+        
+        // check if exists
+        RLMResults<EmailAction*> *unsyncedActions = [EmailAction objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"emailActionID = %@", emailActionID]];
+        
+        if (unsyncedActions.count == 0)
+        {
+            // create
+            EmailAction *newAction = [[EmailAction alloc] init];
+            newAction.emailActionID = emailAction[K_EMAIL_ACTION_ID];
+            newAction.emailAddress = emailAction[K_EMAIL_ACTION_EMAIL];
+            newAction.emailName = emailAction[K_EMAIL_ACTION_NAME_TO_EMAIL];
+            newAction.emailScript = emailAction[K_EMAIL_ACTION_SCRIPT];
+            
+            [realm beginWriteTransaction];
+            [realm addObject:newAction];
+            [realm commitWriteTransaction];
+        }
+    }
+    
+    // diagnostics
+    RLMResults<EmailAction*> *actionDiags = [EmailAction allObjects];
+    for (Action *action in actionDiags)
+    {
+        NSLog(@"Email action = %@", action.description);
+    }
+}
+
+- (void)createPhoneActionsWithData:(NSDictionary*)phoneActions
+{
+    NSLog(@"Creating phone actions");
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    for (NSDictionary *phoneAction in phoneActions)
+    {
+        NSNumber *phoneActionID = phoneAction[K_PHONE_ACTION_ID];
+        
+        // check if exists
+        RLMResults<PhoneAction*> *unsyncedActions = [PhoneAction objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"phoneActionID = %@", phoneActionID]];
+        
+        if (unsyncedActions.count == 0)
+        {
+            // create
+            PhoneAction *newAction = [[PhoneAction alloc] init];
+            newAction.phoneActionID = phoneAction[K_PHONE_ACTION_ID];
+            newAction.phoneNumber = phoneAction[K_PHONE_ACTION_PHONE_NUMBER];
+            newAction.phoneName = phoneAction[K_PHONE_ACTION_NAME_TO_CALL];
+            newAction.phoneScript = phoneAction[K_PHONE_ACTION_SCRIPT];
+            
+            [realm beginWriteTransaction];
+            [realm addObject:newAction];
+            [realm commitWriteTransaction];
+        }
+    }
+    
+    // diagnostics
+    RLMResults<PhoneAction*> *actionDiags = [PhoneAction allObjects];
+    for (Action *action in actionDiags)
+    {
+        NSLog(@"Phone action = %@", action.description);
+    }
+}
+
+
 
 //
 //- (void)syncOpportunity:(Opportunity *)report
