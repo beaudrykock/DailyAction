@@ -13,8 +13,9 @@
 #import "ActionDate.h"
 #import "UserDataManager.h"
 
-@interface MainViewController : UIViewController <UIScrollViewDelegate>
+@interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate>
 
+@property (nonatomic, strong) NSNumber *currentlyDisplayedOpportunityID;
 @property (nonatomic, strong) IBOutlet UIScrollView *opportunityScrollView;
 @property (nonatomic, strong) NSMutableArray *opportunityViews;
 @property (nonatomic, strong) NSMutableArray *opportunities;

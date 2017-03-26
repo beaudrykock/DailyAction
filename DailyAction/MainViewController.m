@@ -90,6 +90,8 @@
         opp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
     }
     
+    self.currentlyDisplayedOpportunityID = opp.opportunityID;
+    
     self.titleView.lb_title.text = opp.summary;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -184,6 +186,7 @@
     float base_width = self.opportunityScrollView.frame.size.width;
     
     OpportunityCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
+    opportunity.parentController = self;
     opportunity.tag = page;
     
     // for today's action
@@ -296,6 +299,21 @@
             [self.lb_votingLocation setText:[NSString stringWithFormat:@"You're a %@ voter (%@)", userLocality, userZipcode]];
         }
     }
+}
+
+#pragma mark - Mail compose delegate methods
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    // Check the result or perform other tasks.
+    
+    if (result == MFMailComposeResultSent)
+    {
+        // mark as done
+        [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+    }
+    // Dismiss the mail compose view controller.
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

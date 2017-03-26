@@ -31,5 +31,6 @@
 - (EmailAction*)emailActionForActionWithID:(NSNumber*)actionID;
 - (PhoneAction*)phoneActionForActionWithID:(NSNumber*)actionID;
 - (Action*)actionForOpportunityWithID:(NSNumber*)opportunityID;
+- (void)markOpportunityAsActedOnWithID:(NSNumber*)opportunityID;
 
 @end

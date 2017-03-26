@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Opportunity.h"
 #import "OpportunityDataManager.h"
+#import <MessageUI/MessageUI.h>
+#import "MBProgressHUD.h"
 
-@interface OpportunityCard : UIView
+@interface OpportunityCard : UIView 
 
+@property (nonatomic, weak) id parentController;
+@property (nonatomic, assign) NSNumber *actionType;
+@property (nonatomic, assign) NSNumber *opportunityID;
 @property (nonatomic, strong) IBOutlet UILabel *lb_actionsTaken;
 @property (nonatomic, strong) IBOutlet UILabel *lb_criticality;
 @property (nonatomic, strong) IBOutlet UILabel *lb_ease;

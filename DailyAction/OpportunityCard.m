@@ -21,7 +21,8 @@
 
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity
 {
-    // TODO
+    self.opportunityID = opportunity.opportunityID;
+    
     self.actionTitle.text = opportunity.title;
     [self.actionTitle sizeToFit];
     CGRect frame = self.actionTitle.frame;
@@ -36,6 +37,8 @@
     self.lb_actionsTaken.text = [NSString stringWithFormat:@"%u actions taken",arc4random_uniform(1000)];
     
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:opportunity.opportunityID];
+    
+    self.actionType = action.actionType;
     
     if (action.actionType.integerValue == K_EMAIL_ACTION_TYPE)
     {
@@ -75,6 +78,51 @@
 
         
         [self.btn_action setAttributedTitle:string forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)takeAction:(id)sender
+{
+    switch (self.actionType.integerValue) {
+        case K_EMAIL_ACTION_TYPE:
+            if (![MFMailComposeViewController canSendMail]) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+                 hud.label.text = @"Please set up e-mail";
+                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    // Do something...
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [MBProgressHUD hideHUDForView:self animated:YES];
+                    });
+                });
+                return;
+            }
+            else
+            {
+                // get the action
+                Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.opportunityID];
+                
+                // get the subaction
+                EmailAction *emailAction = [[OpportunityDataManager sharedInstance] emailActionForActionWithID:action.actionID];
+                
+                
+                MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
+                composeVC.mailComposeDelegate = _parentController;
+                
+                // Configure the fields of the interface.
+                [composeVC setToRecipients:@[emailAction.emailAddress]];
+                [composeVC setSubject:@"Hear me roar"];
+                [composeVC setMessageBody:emailAction.emailScript isHTML:NO];
+                
+                // Present the view controller modally.
+                [_parentController presentViewController:composeVC animated:YES completion:nil];
+            }
+            break;
+            
+        case K_PHONE_ACTION_TYPE:
+            
+            break;
+        default:
+            break;
     }
 }
 

@@ -91,6 +91,20 @@
     return nil;
 }
 
+- (void)markOpportunityAsActedUponWithID:(NSNumber*)opportunityID
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"opportunityID = %@", opportunityID]];
+    if (opportunities.count >= 1)
+    {
+        [realm beginWriteTransaction];
+        opportunities[0].actedOn = YES;
+        [realm addOrUpdateObject:opportunities[0]];
+        [realm commitWriteTransaction];
+    }
+}
+
 - (PhoneAction*)phoneActionForActionWithID:(NSNumber*)actionID
 {
     RLMRealm *realm = [RLMRealm defaultRealm];
