@@ -61,17 +61,40 @@
 }
 
 
-- (void)loadTitleView
+- (void)refreshTitleView
 {
-     self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"ActionDateView" owner:self options:nil] objectAtIndex:0];
-    self.titleView.date_container.layer.cornerRadius = 15.0;
+    if (!self.titleView)
+    {
+        self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"ActionDateView" owner:self options:nil] objectAtIndex:0];
+        self.titleView.date_container.layer.cornerRadius = 15.0;
+        
+        CGRect frame = self.titleView.frame;
+        frame.origin.x = (self.view.frame.size.width-self.titleView.frame.size.width)/2.0;
+        frame.origin.y = 26.0;
+        self.titleView.frame = frame;
+        
+        [self.view addSubview:self.titleView];
+    }
     
-    CGRect frame = self.titleView.frame;
-    frame.origin.x = (self.view.frame.size.width-self.titleView.frame.size.width)/2.0;
-    frame.origin.y = 26.0;
-    self.titleView.frame = frame;
+    // parameterize title view
+    RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] actedOnOpportunities];
     
-    [self.view addSubview:self.titleView];
+    Opportunity *opp;
+    
+    if ([self currentPage] == opportunities.count)
+    {
+        opp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
+    }
+    else
+    {
+        opp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
+    }
+    
+    self.titleView.lb_title.text = opp.summary;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"MMM dd";
+    self.titleView.lb_date.text = [dateFormatter stringFromDate:[NSDate date]];
 }
 
 - (void)refreshOpportunityViews
@@ -110,7 +133,7 @@
     if (oppCount>1)
         [self createOpportunityViewAtPage: [self currentPage]-1];
     
-    [self loadTitleView];
+    [self refreshTitleView];
 }
 
 # pragma mark -
@@ -144,13 +167,8 @@
     {
         _lastPage = [self currentPage];
         
-        [self parameterizeTitle];
+        [self refreshTitleView];
     }
-}
-
-- (void)parameterizeTitle
-{
-    // TODO
 }
 
 - (NSInteger)currentPage

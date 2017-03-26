@@ -29,5 +29,7 @@
 + (CGSize) sizeAspectFitForRatio:(CGSize)aspectRatio toBoundingSize:(CGSize)boundingSize;
 + (UIImage *)convertImageToGrayScale:(UIImage *)image;
 + (UIImage *)placeImageOne:(UIImage*)imageOne sideBySideWithImageTwo:(UIImage*)imageTwo;
++ (NSString*)criticalityFromIndex:(NSInteger)index;
++ (NSString*)easeFromIndex:(NSInteger)index;
 
 @end

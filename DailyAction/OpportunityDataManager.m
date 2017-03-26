@@ -71,7 +71,7 @@
     return opportunities.count;
 }
 
-- (NSNumber*)actionTypeForOpportunityWithID:(NSInteger)opportunityID
+- (Action*)actionForOpportunityWithID:(NSNumber*)opportunityID
 {
     RLMRealm *realm = [RLMRealm defaultRealm];
     
@@ -84,14 +84,48 @@
         
         if (actions.count>=1)
         {
-            return actions[0].actionType;
+            return actions[0];
         }
     }
     
-    return @1000;
+    return nil;
 }
 
+- (PhoneAction*)phoneActionForActionWithID:(NSNumber*)actionID
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    RLMResults<Action*> *actions = [Action objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"actionID = %@", actionID]];
+    
+    if (actions.count >= 1)
+    {
+        RLMResults<PhoneAction*> *phoneActions = [PhoneAction objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"phoneActionID = %@", actions[0].subActionID]];
+        
+        if (phoneActions.count >= 1)
+            return phoneActions[0];
+        
+        return nil;
+    }
+    
+    return nil;
+}
 
+- (EmailAction*)emailActionForActionWithID:(NSNumber*)actionID
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    RLMResults<Action*> *actions = [Action objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"actionID = %@", actionID]];
+    
+    if (actions.count >= 1)
+    {
+        RLMResults<EmailAction*> *emailActions = [EmailAction objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"emailActionID = %@", actions[0].subActionID]];
+        
+        if (emailActions.count >= 1)
+            return emailActions[0];
+        
+        return nil;
+    }
+    
+    return nil;
+}
 
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities
 {

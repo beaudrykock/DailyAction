@@ -16,9 +16,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *lb_criticality;
 @property (nonatomic, strong) IBOutlet UILabel *lb_ease;
 @property (nonatomic, strong) IBOutlet UILabel *actionTitle;
-@property (nonatomic, strong) IBOutlet UIScrollView *text;
+@property (nonatomic, strong) IBOutlet UITextView *text;
 @property (nonatomic, strong) IBOutlet UIButton *btn_action;
 @property (nonatomic, strong) IBOutlet UIView *inner_container;
+@property (nonatomic, strong) IBOutlet UIView *dividingLine;
 
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity;
 

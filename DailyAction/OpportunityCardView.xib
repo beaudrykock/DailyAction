@@ -65,12 +65,12 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Action Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWJ-wU-fgJ">
-                            <rect key="frame" x="104" y="100" width="127" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Action Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UWJ-wU-fgJ">
+                            <rect key="frame" x="16" y="100" width="304" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -80,7 +80,7 @@
                     <rect key="frame" x="0.0" y="455" width="335" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                     <state key="normal" title="Call Senator Feinstein">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -93,11 +93,12 @@
             <connections>
                 <outlet property="actionTitle" destination="UWJ-wU-fgJ" id="wpm-jE-EXn"/>
                 <outlet property="btn_action" destination="qaV-L2-9Tr" id="GU9-Ja-ZNZ"/>
+                <outlet property="dividingLine" destination="8gg-aQ-7w2" id="hWd-tS-Zo2"/>
                 <outlet property="inner_container" destination="0Cc-br-3rx" id="9Cc-O8-d9E"/>
                 <outlet property="lb_actionsTaken" destination="c4J-Di-qYI" id="zcP-kh-ZZH"/>
                 <outlet property="lb_criticality" destination="sIp-jT-kef" id="OpM-w2-A3C"/>
                 <outlet property="lb_ease" destination="FHK-8W-slc" id="9SK-qn-Ktx"/>
-                <outlet property="text" destination="fmJ-Sw-iXE" id="mRF-Kd-v5E"/>
+                <outlet property="text" destination="fmJ-Sw-iXE" id="w3k-sa-DaU"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="38"/>
         </view>

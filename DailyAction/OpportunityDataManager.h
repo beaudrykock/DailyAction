@@ -28,5 +28,8 @@
 - (RLMResults<Opportunity*>*)actedOnOpportunities;
 - (Opportunity*)todaysOpportunity;
 - (NSInteger)countOfActedOnOpportunities;
+- (EmailAction*)emailActionForActionWithID:(NSNumber*)actionID;
+- (PhoneAction*)phoneActionForActionWithID:(NSNumber*)actionID;
+- (Action*)actionForOpportunityWithID:(NSNumber*)opportunityID;
 
 @end

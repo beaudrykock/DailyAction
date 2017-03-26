@@ -45,6 +45,9 @@
 #define K_EMAIL_ACTION_SCRIPT @"script"
 #define K_EMAIL_ACTION_ZIPCODE @"zip_code"
 
+#define K_EMAIL_ACTION_TYPE 1
+#define K_PHONE_ACTION_TYPE 2
+
 // CONSTANTS
 
 #define TODAY 0
