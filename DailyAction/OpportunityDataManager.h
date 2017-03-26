@@ -18,6 +18,9 @@
 @interface OpportunityDataManager : NSObject
 + (OpportunityDataManager *) sharedInstance;
 
+@property (nonatomic, assign) BOOL contentAvailable;
+@property (nonatomic, assign) BOOL contentUpdated;
+
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities;
 - (void)createActionsWithData:(NSDictionary*)actions;
 - (void)createPhoneActionsWithData:(NSDictionary*)phoneActions;

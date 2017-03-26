@@ -22,7 +22,12 @@
 
 - (void)setup
 {
-    
+    [self checkContentAvailability];
+}
+
+- (void)checkContentAvailability
+{
+    self.contentAvailable = [self opportunityAvailable];
 }
 
 // most imminent opportunity that hasn't yet been acted on
@@ -36,6 +41,15 @@
         return [opportunities objectAtIndex:0];
     
     return nil;
+}
+
+- (BOOL)opportunityAvailable
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    RLMResults<Opportunity*> *opportunities = [[Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate >= %@ AND actedOn = NO", [NSDate date]]] sortedResultsUsingKeyPath:@"dueDate" ascending:NO];
+    
+    return opportunities.count>0 || [self actedOnOpportunities]>0;
 }
 
 - (RLMResults<Opportunity*>*)actedOnOpportunities
@@ -84,7 +98,8 @@
     NSLog(@"Creating opportunities");
     
     RLMRealm *realm = [RLMRealm defaultRealm];
-
+    
+    BOOL freshContent = NO;
     
     for (NSDictionary *opportunity in opportunities)
     {
@@ -113,9 +128,12 @@
             [realm beginWriteTransaction];
             [realm addObject:newOpp];
             [realm commitWriteTransaction];
-            // TODO: get action and issue ID and hook up
+            
+            freshContent = YES;
         }
     }
+    
+    self.contentUpdated = freshContent;
     
     // diagnostics
     RLMResults<Opportunity*> *opps = [Opportunity allObjects];

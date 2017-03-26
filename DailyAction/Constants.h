@@ -57,6 +57,8 @@
 
 // NOTIFICATIONS
 #define UPDATED_USER_LOCATION @"updatedUserLocation"
+#define CONTENT_AVAILABLE @"contentAvailable"
+#define CONTENT_UPDATED @"contentUpdated"
 
 // KEYS
 #define KUMULOS_API_KEY @"863cee23ed1f7c20bcbba542f32272ea85584b25bc61a120f6bec0baa1a6eb02"

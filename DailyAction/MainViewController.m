@@ -18,14 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [self prefersStatusBarHidden];
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
     
     [self setup];
     
-    [self refreshOpportunityViews];
-    
     [self refreshUserVotingLocation];
-    
-    [self loadTitleView];
 }
 
 - (void)setup
@@ -40,7 +40,26 @@
     // subscribe to notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserVotingLocation) name:UPDATED_USER_LOCATION object:nil];
   
+    [[OpportunityDataManager sharedInstance] addObserver:self forKeyPath:@"contentUpdated" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    if ([[OpportunityDataManager sharedInstance] contentAvailable])
+    {
+        [self refreshOpportunityViews];
+    }
 }
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+  if ([keyPath isEqualToString:@"contentUpdated"]) {
+        if ([[OpportunityDataManager sharedInstance] contentUpdated])
+        {
+            [self refreshOpportunityViews];
+            
+            [OpportunityDataManager sharedInstance].contentUpdated = NO;
+        }
+    }
+}
+
 
 - (void)loadTitleView
 {
@@ -90,7 +109,8 @@
     
     if (oppCount>1)
         [self createOpportunityViewAtPage: [self currentPage]-1];
-
+    
+    [self loadTitleView];
 }
 
 # pragma mark -
@@ -265,5 +285,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 @end
