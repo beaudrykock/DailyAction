@@ -73,6 +73,10 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="actedOn" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-ad-sJM">
+                            <rect key="frame" x="265" y="0.0" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -98,6 +102,7 @@
                 <outlet property="btn_action" destination="qaV-L2-9Tr" id="GU9-Ja-ZNZ"/>
                 <outlet property="dividingLine" destination="8gg-aQ-7w2" id="hWd-tS-Zo2"/>
                 <outlet property="inner_container" destination="0Cc-br-3rx" id="9Cc-O8-d9E"/>
+                <outlet property="iv_actedOn" destination="zp6-ad-sJM" id="D4m-a6-xJM"/>
                 <outlet property="lb_actionsTaken" destination="c4J-Di-qYI" id="zcP-kh-ZZH"/>
                 <outlet property="lb_criticality" destination="sIp-jT-kef" id="OpM-w2-A3C"/>
                 <outlet property="lb_ease" destination="FHK-8W-slc" id="9SK-qn-Ktx"/>
@@ -107,6 +112,7 @@
         </view>
     </objects>
     <resources>
+        <image name="actedOn" width="70" height="70"/>
         <image name="actionsTaken" width="18" height="27"/>
         <image name="easyAction" width="27" height="27"/>
         <image name="mediumCriticality" width="21" height="33"/>

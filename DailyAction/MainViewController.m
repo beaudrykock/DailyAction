@@ -311,7 +311,10 @@
     {
         // mark as done
         [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+        
+        [self refreshOpportunityViews];
     }
+    
     // Dismiss the mail compose view controller.
     [self dismissViewControllerAnimated:YES completion:nil];
 }

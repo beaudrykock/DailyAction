@@ -91,7 +91,7 @@
     return nil;
 }
 
-- (void)markOpportunityAsActedUponWithID:(NSNumber*)opportunityID
+- (void)markOpportunityAsActedOnWithID:(NSNumber*)opportunityID
 {
     RLMRealm *realm = [RLMRealm defaultRealm];
     

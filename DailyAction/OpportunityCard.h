@@ -11,9 +11,11 @@
 #import "OpportunityDataManager.h"
 #import <MessageUI/MessageUI.h>
 #import "MBProgressHUD.h"
+#import "PhoneAction.h"
 
 @interface OpportunityCard : UIView 
 
+@property (nonatomic, strong) IBOutlet UIImageView *iv_actedOn;
 @property (nonatomic, weak) id parentController;
 @property (nonatomic, assign) NSNumber *actionType;
 @property (nonatomic, assign) NSNumber *opportunityID;

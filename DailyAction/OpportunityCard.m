@@ -36,6 +36,11 @@
     self.lb_ease.text = [Utilities easeFromIndex:opportunity.difficulty.integerValue];
     self.lb_actionsTaken.text = [NSString stringWithFormat:@"%u actions taken",arc4random_uniform(1000)];
     
+    if (opportunity.actedOn)
+        self.iv_actedOn.hidden = NO;
+    else
+        self.iv_actedOn.hidden = YES;
+    
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:opportunity.opportunityID];
     
     self.actionType = action.actionType;
@@ -83,6 +88,9 @@
 
 - (IBAction)takeAction:(id)sender
 {
+    // get the action
+    Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.opportunityID];
+   
     switch (self.actionType.integerValue) {
         case K_EMAIL_ACTION_TYPE:
             if (![MFMailComposeViewController canSendMail]) {
@@ -98,12 +106,8 @@
             }
             else
             {
-                // get the action
-                Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.opportunityID];
-                
                 // get the subaction
                 EmailAction *emailAction = [[OpportunityDataManager sharedInstance] emailActionForActionWithID:action.actionID];
-                
                 
                 MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
                 composeVC.mailComposeDelegate = _parentController;
@@ -119,7 +123,34 @@
             break;
             
         case K_PHONE_ACTION_TYPE:
+        {
+            // get the subaction
+            PhoneAction *phoneAction = [[OpportunityDataManager sharedInstance] phoneActionForActionWithID:action.actionID];
             
+            NSURL *phoneUrl = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:phoneAction.phoneNumber]];
+            NSURL *phoneFallbackUrl = [NSURL URLWithString:[@"tel://" stringByAppendingString:phoneAction.phoneNumber]];
+            
+            if ([UIApplication.sharedApplication canOpenURL:phoneUrl]) {
+                [UIApplication.sharedApplication openURL:phoneUrl options:@{} completionHandler:^(BOOL success) {
+                    
+                }];
+            } else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
+                [UIApplication.sharedApplication openURL:phoneFallbackUrl options:@{} completionHandler:^(BOOL success) {
+                    
+                }];
+            } else {
+                // device cannot do phone calls
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+                hud.label.text = @"Phone functions not available on your device";
+                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    // Do something...
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [MBProgressHUD hideHUDForView:self animated:YES];
+                    });
+                });
+
+            }
+        }
             break;
         default:
             break;
