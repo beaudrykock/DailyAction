@@ -50,6 +50,10 @@
                        value:[UIFont fontWithName:@"Avenir-Heavy" size:18.0]
                        range:selectedRange];
         
+        [string addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor blackColor]
+                       range:NSMakeRange(0, string.length)];
+        
         [string endEditing];
         
         [self.btn_action setAttributedTitle:string forState:UIControlStateNormal];
