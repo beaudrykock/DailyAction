@@ -12,8 +12,9 @@
 #import "Constants.h"
 #import "ActionDate.h"
 #import "UserDataManager.h"
+#import "CallScript.h"
 
-@interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate>
+@interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate, CallScriptDelegate, OpportunityCardDelegate>
 
 @property (nonatomic, strong) NSNumber *currentlyDisplayedOpportunityID;
 @property (nonatomic, strong) IBOutlet UIScrollView *opportunityScrollView;
@@ -26,6 +27,9 @@
 @property (nonatomic, strong) IBOutlet UIButton *btn_changeLocation;
 @property (nonatomic, strong) UIAlertAction *okAction;
 @property (nonatomic, strong) IBOutlet UILabel *lb_votingLocation;
+@property (nonatomic, strong) CallScript *callScriptView;
+
+
 
 @end
 

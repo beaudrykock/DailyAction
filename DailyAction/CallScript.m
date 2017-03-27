@@ -24,6 +24,8 @@
     self.lb_actionTitle.layer.cornerRadius = 16;
     self.scriptContainer.layer.cornerRadius = 15;
     self.btn_takeAction.layer.cornerRadius = 15;
+    self.lb_actionTitle.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.lb_actionTitle.layer.borderWidth = 3.0;
     
     self.opportunityID = opportunity.opportunityID;
     
@@ -84,69 +86,26 @@
     }
 }
 
+
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
     if ([[URL scheme] isEqualToString:@"newname"]) {
         
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@"What's your name?"
-                                              message:@"Enter your first and last name"
-                                              preferredStyle:UIAlertControllerStyleAlert];
+        [self.delegate showUpdateNameModal];
         
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
-         {
-             textField.placeholder = @"";
-             [textField addTarget:self
-                           action:@selector(alertTextFieldDidChange:)
-                 forControlEvents:UIControlEventEditingChanged];
-         }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction
-                                       actionWithTitle:@"Cancel"
-                                       style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction *action)
-                                       {
-                                           NSLog(@"Cancel action");
-                                       }];
-        
-       self.okAction = [UIAlertAction
-                 actionWithTitle:@"Update"
-                 style:UIAlertActionStyleDefault
-                 handler:^(UIAlertAction *action)
-                 {
-                     UITextField *name = alertController.textFields.firstObject;
-                     
-                     [[UserDataManager sharedInstance] updateUserFullName: name.text];
-                     
-                     [self generateScript];
-                     
-                 }];
-        
-        [alertController addAction:cancelAction];
-        [alertController addAction:self.okAction];
-        self.okAction.enabled = NO;
-        
-        [self.parentController presentViewController:alertController animated:YES completion:nil];
         return NO;
     }
         return YES; // let the system open this URL
 }
 
-- (void)alertTextFieldDidChange:(UITextField *)sender
+
+- (IBAction)call:(id)sender
 {
-    UIAlertController *alertController = (UIAlertController *)((UIViewController*)self.parentController).presentedViewController;
-    if (alertController)
-    {
-        UITextField *login = alertController.textFields.firstObject;
-        
-        if ([login.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location == NSNotFound && login.text.length >= 2)
-        {
-            self.okAction.enabled = YES;
-        }
-        else
-        {
-            self.okAction.enabled = NO;
-        }
-    }
+    [self.delegate makeCall];
+}
+
+- (IBAction)cancel:(id)sender
+{
+    [self.delegate cancelScript];
 }
 
 @end

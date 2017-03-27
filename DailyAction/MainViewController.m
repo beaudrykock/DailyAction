@@ -186,7 +186,7 @@
     float base_width = self.opportunityScrollView.frame.size.width;
     
     OpportunityCard* opportunity = [[[NSBundle mainBundle] loadNibNamed:@"OpportunityCardView" owner:self options:nil] objectAtIndex:0];
-    opportunity.parentController = self;
+    opportunity.delegate = self;
     opportunity.tag = page;
     
     // for today's action
@@ -265,17 +265,34 @@
     UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
     if (alertController)
     {
-        UITextField *login = alertController.textFields.firstObject;
-        
-        
-        NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-        if ([login.text rangeOfCharacterFromSet:notDigits].location == NSNotFound && login.text.length == 5)
+        if ([alertController.title isEqualToString:@"Where do you vote?"])
         {
-            self.okAction.enabled = YES;
+        
+            UITextField *login = alertController.textFields.firstObject;
+            
+            
+            NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+            if ([login.text rangeOfCharacterFromSet:notDigits].location == NSNotFound && login.text.length == 5)
+            {
+                self.okAction.enabled = YES;
+            }
+            else
+            {
+                self.okAction.enabled = NO;
+            }
         }
         else
         {
-            self.okAction.enabled = NO;
+            UITextField *login = alertController.textFields.firstObject;
+            
+            if ([login.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location == NSNotFound && login.text.length >= 2)
+            {
+                self.okAction.enabled = YES;
+            }
+            else
+            {
+                self.okAction.enabled = NO;
+            }
         }
     }
 }
@@ -319,6 +336,151 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)composeEmail
+{
+    Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.currentlyDisplayedOpportunityID];
+    
+    if (![MFMailComposeViewController canSendMail]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"Please set up e-mail";
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            // Do something...
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+        return;
+    }
+    else
+    {
+        // get the subaction
+        EmailAction *emailAction = [[OpportunityDataManager sharedInstance] emailActionForActionWithID:action.actionID];
+        
+        MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
+        composeVC.mailComposeDelegate = self;
+        
+        // Configure the fields of the interface.
+        [composeVC setToRecipients:@[emailAction.emailAddress]];
+        [composeVC setSubject:@"Hear me roar"];
+        [composeVC setMessageBody:emailAction.emailScript isHTML:NO];
+        
+        // Present the view controller modally.
+        [self presentViewController:composeVC animated:YES completion:nil];
+    }
+}
+
+#pragma mark - Updating name
+
+- (void)showUpdateNameModal
+{
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"What's your name?"
+                                          message:@"Enter your first and last name"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"";
+         [textField addTarget:self
+                       action:@selector(alertTextFieldDidChange:)
+             forControlEvents:UIControlEventEditingChanged];
+     }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel action");
+                                   }];
+    
+    self.okAction = [UIAlertAction
+                     actionWithTitle:@"Update"
+                     style:UIAlertActionStyleDefault
+                     handler:^(UIAlertAction *action)
+                     {
+                         UITextField *name = alertController.textFields.firstObject;
+                         
+                         [[UserDataManager sharedInstance] updateUserFullName: name.text];
+                         
+                         [self.callScriptView generateScript];
+                         
+                     }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:self.okAction];
+    self.okAction.enabled = NO;
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+#pragma mark - Script view handling
+
+- (void)showCallScript
+{
+    self.callScriptView = [[[NSBundle mainBundle] loadNibNamed:@"CallScriptView" owner:self options:nil] objectAtIndex:0];
+    self.callScriptView.delegate = self;
+    
+    CGRect frame = self.callScriptView.frame;
+    frame.origin.x = (self.view.frame.size.width-self.callScriptView.frame.size.width)/2.0;
+    frame.origin.y = self.view.frame.size.height;
+    self.callScriptView.frame = frame;
+    
+    [self.view addSubview:self.callScriptView];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame = self.callScriptView.frame;
+        frame.origin.y = self.opportunityScrollView.frame.origin.y;
+        self.callScriptView.frame = frame;
+    }];
+}
+
+- (void)cancelScript
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame = self.callScriptView.frame;
+        frame.origin.y = self.view.frame.size.height;
+        self.callScriptView.frame = frame;
+    } completion:^(BOOL finished) {
+        [self.callScriptView removeFromSuperview];
+        _callScriptView = nil;
+    }];
+}
+
+- (void)makeCall
+{
+    Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.currentlyDisplayedOpportunityID];
+    
+    // get the subaction
+    PhoneAction *phoneAction = [[OpportunityDataManager sharedInstance] phoneActionForActionWithID:action.actionID];
+    
+    NSURL *phoneUrl = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:phoneAction.phoneNumber]];
+    NSURL *phoneFallbackUrl = [NSURL URLWithString:[@"tel://" stringByAppendingString:phoneAction.phoneNumber]];
+    
+    if ([UIApplication.sharedApplication canOpenURL:phoneUrl]) {
+        [UIApplication.sharedApplication openURL:phoneUrl options:@{} completionHandler:^(BOOL success) {
+            
+        }];
+    } else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
+        [UIApplication.sharedApplication openURL:phoneFallbackUrl options:@{} completionHandler:^(BOOL success) {
+            
+        }];
+    } else {
+        // device cannot do phone calls
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"Phone functions not available on your device";
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            // Do something...
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+        
+    }
+}
+
+#pragma mark - Housekeeping
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

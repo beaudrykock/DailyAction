@@ -88,68 +88,14 @@
 
 - (IBAction)takeAction:(id)sender
 {
-    // get the action
-    Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.opportunityID];
-   
     switch (self.actionType.integerValue) {
         case K_EMAIL_ACTION_TYPE:
-            if (![MFMailComposeViewController canSendMail]) {
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-                 hud.label.text = @"Please set up e-mail";
-                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                    // Do something...
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideHUDForView:self animated:YES];
-                    });
-                });
-                return;
-            }
-            else
-            {
-                // get the subaction
-                EmailAction *emailAction = [[OpportunityDataManager sharedInstance] emailActionForActionWithID:action.actionID];
-                
-                MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
-                composeVC.mailComposeDelegate = _parentController;
-                
-                // Configure the fields of the interface.
-                [composeVC setToRecipients:@[emailAction.emailAddress]];
-                [composeVC setSubject:@"Hear me roar"];
-                [composeVC setMessageBody:emailAction.emailScript isHTML:NO];
-                
-                // Present the view controller modally.
-                [_parentController presentViewController:composeVC animated:YES completion:nil];
-            }
+            [self.delegate composeEmail];
             break;
             
         case K_PHONE_ACTION_TYPE:
         {
-            // get the subaction
-            PhoneAction *phoneAction = [[OpportunityDataManager sharedInstance] phoneActionForActionWithID:action.actionID];
-            
-            NSURL *phoneUrl = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:phoneAction.phoneNumber]];
-            NSURL *phoneFallbackUrl = [NSURL URLWithString:[@"tel://" stringByAppendingString:phoneAction.phoneNumber]];
-            
-            if ([UIApplication.sharedApplication canOpenURL:phoneUrl]) {
-                [UIApplication.sharedApplication openURL:phoneUrl options:@{} completionHandler:^(BOOL success) {
-                    
-                }];
-            } else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
-                [UIApplication.sharedApplication openURL:phoneFallbackUrl options:@{} completionHandler:^(BOOL success) {
-                    
-                }];
-            } else {
-                // device cannot do phone calls
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-                hud.label.text = @"Phone functions not available on your device";
-                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                    // Do something...
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideHUDForView:self animated:YES];
-                    });
-                });
-
-            }
+            [self.delegate showCallScript];
         }
             break;
         default:

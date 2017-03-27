@@ -13,10 +13,17 @@
 #import "MBProgressHUD.h"
 #import "PhoneAction.h"
 
-@interface OpportunityCard : UIView 
+@protocol OpportunityCardDelegate <NSObject>
+
+- (void)composeEmail;
+- (void)showCallScript;
+
+@end
+
+@interface OpportunityCard : UIView
 
 @property (nonatomic, strong) IBOutlet UIImageView *iv_actedOn;
-@property (nonatomic, weak) id parentController;
+@property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSNumber *actionType;
 @property (nonatomic, assign) NSNumber *opportunityID;
 @property (nonatomic, strong) IBOutlet UILabel *lb_actionsTaken;
