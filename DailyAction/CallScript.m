@@ -7,6 +7,7 @@
 //
 
 #import "CallScript.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CallScript
 
@@ -20,6 +21,10 @@
 
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity
 {
+    self.lb_actionTitle.layer.cornerRadius = 16;
+    self.scriptContainer.layer.cornerRadius = 15;
+    self.btn_takeAction.layer.cornerRadius = 15;
+    
     self.opportunityID = opportunity.opportunityID;
     
     [self generateScript];

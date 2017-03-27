@@ -15,6 +15,7 @@
 @interface CallScript : UIView <UITextViewDelegate>
 
 @property (nonatomic, weak) id parentController;
+@property (nonatomic, strong) IBOutlet UIView *scriptContainer;
 @property (nonatomic, strong) IBOutlet UILabel *lb_actionTitle;
 @property (nonatomic, strong) IBOutlet UITextView *tv_actionScript;
 @property (nonatomic, strong) IBOutlet UIButton *btn_takeAction;
