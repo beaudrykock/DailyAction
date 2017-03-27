@@ -41,6 +41,55 @@
     [self setUserVotingZipcode];
  }
 
+- (NSString*)userFullName
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        if (user.firstName && user.lastName)
+        {
+            return [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+        }
+    }
+    
+    return @"";
+}
+
+- (NSString*)userCity
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        if (user.city)
+        {
+            return user.city;
+        }
+    }
+    
+    return @"";
+}
+
+- (void)updateUserFullName:(NSString *)fullname
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [self currentUserInRealm:realm];
+    
+    NSArray *chunks = [fullname componentsSeparatedByString: @" "];
+    
+    if (user)
+    {
+        [realm beginWriteTransaction];
+        user.firstName = chunks[0];
+        user.lastName = chunks[1];
+        [realm addOrUpdateObject:user];
+        [realm commitWriteTransaction];
+    }
+}
+
 // only for setting if zipcode doesn't already exist, based on location
 - (void)setUserVotingZipcode
 {

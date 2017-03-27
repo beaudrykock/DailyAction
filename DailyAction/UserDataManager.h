@@ -23,6 +23,9 @@
 - (NSString*)userVotingZip;
 - (NSString*)userLocationSource;
 - (void)updateUserLocationSource:(NSString*)source;
+- (NSString*)userFullName;
+- (NSString*)userCity;
+- (void)updateUserFullName:(NSString*)fullname;
 
 //
 //- (NSInteger)lastPointsAwardForRider;

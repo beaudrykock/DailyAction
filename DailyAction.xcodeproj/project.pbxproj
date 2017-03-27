@@ -24,6 +24,8 @@
 		9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C0B1E6E07E20070C43F /* Opportunity.m */; };
 		9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */; };
 		A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A90EB0F91E6E63A1009078ED /* Utilities.m */; };
+		A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E28DEA1E889FA00013DB6E /* CallScript.m */; };
+		A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */; };
 		A9F4D8B11E78F6CD005A8DE3 /* ActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B01E78F6CD005A8DE3 /* ActionDate.m */; };
 		A9F4D8B31E78F6E3005A8DE3 /* ActionDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F4D8B21E78F6E3005A8DE3 /* ActionDateView.xib */; };
 		A9F4D8B61E7F1434005A8DE3 /* CloudDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */; };
@@ -64,6 +66,9 @@
 		A90EB0F81E6E63A1009078ED /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		A90EB0F91E6E63A1009078ED /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		A90EB0FB1E6E63BD009078ED /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A9E28DE91E889FA00013DB6E /* CallScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallScript.h; sourceTree = "<group>"; };
+		A9E28DEA1E889FA00013DB6E /* CallScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallScript.m; sourceTree = "<group>"; };
+		A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallScriptView.xib; sourceTree = "<group>"; };
 		A9F4D8AF1E78F6CD005A8DE3 /* ActionDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDate.h; sourceTree = "<group>"; };
 		A9F4D8B01E78F6CD005A8DE3 /* ActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDate.m; sourceTree = "<group>"; };
 		A9F4D8B21E78F6E3005A8DE3 /* ActionDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionDateView.xib; sourceTree = "<group>"; };
@@ -114,6 +119,9 @@
 				A9F4D8AF1E78F6CD005A8DE3 /* ActionDate.h */,
 				A9F4D8B01E78F6CD005A8DE3 /* ActionDate.m */,
 				A9F4D8B21E78F6E3005A8DE3 /* ActionDateView.xib */,
+				A9E28DE91E889FA00013DB6E /* CallScript.h */,
+				A9E28DEA1E889FA00013DB6E /* CallScript.m */,
+				A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAE76C01E61129200EE1378 /* LaunchScreen.storyboard in Resources */,
+				A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */,
 				9FAE76BD1E61129200EE1378 /* Assets.xcassets in Resources */,
 				9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */,
 				A9F4D8B31E78F6E3005A8DE3 /* ActionDateView.xib in Resources */,
@@ -347,6 +356,7 @@
 				9F7C14971E6E0BC300E21B16 /* EmailAction.m in Sources */,
 				9FC29C051E6E065F0070C43F /* User.m in Sources */,
 				9FC29C081E6E06F40070C43F /* Action.m in Sources */,
+				A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */,
 				9F7C149A1E6E135400E21B16 /* Issue.m in Sources */,
 				9F7C14A21E6E16EB00E21B16 /* OpportunityCard.m in Sources */,
 				A9F4D8B11E78F6CD005A8DE3 /* ActionDate.m in Sources */,
