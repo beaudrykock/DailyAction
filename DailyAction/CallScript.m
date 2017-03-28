@@ -21,13 +21,34 @@
 
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity
 {
-    self.lb_actionTitle.layer.cornerRadius = 16;
     self.scriptContainer.layer.cornerRadius = 15;
     self.btn_takeAction.layer.cornerRadius = 15;
-    self.lb_actionTitle.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.lb_actionTitle.layer.borderWidth = 3.0;
-    
+    self.titleContainer.layer.cornerRadius = 16;
+    self.titleContainer.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.titleContainer.layer.borderWidth = 3.0;
+    self.btn_takeAction.layer.cornerRadius = 20;
     self.opportunityID = opportunity.opportunityID;
+    
+    Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:opportunity.opportunityID];
+    
+    PhoneAction *phoneAction = [[OpportunityDataManager sharedInstance] phoneActionForActionWithID:action.actionID];
+    
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Call %@", phoneAction.phoneName]];
+    NSRange selectedRange = NSMakeRange(5, phoneAction.phoneName.length); // 4 characters, starting at index 22
+    
+    [string beginEditing];
+    
+    [string addAttribute:NSFontAttributeName
+                   value:[UIFont fontWithName:@"Avenir-Light" size:15.0]
+                   range:NSMakeRange(0, string.length)];
+    
+    [string addAttribute:NSFontAttributeName
+                   value:[UIFont fontWithName:@"Avenir-Heavy" size:15.0]
+                   range:selectedRange];
+    
+    [string endEditing];
+    
+    [self.lb_actionTitle setAttributedText:string];
     
     [self generateScript];
 }
@@ -51,7 +72,9 @@
         // check if city exists for user
         NSString *city = [[UserDataManager sharedInstance] userCity];
         
-        NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor greenColor],
+        UIColor *linkColor = [UIColor colorWithRed:238.0/255.0 green:61.0/255.0 blue:72.0/255.0 alpha:1.0];
+        
+        NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: linkColor,
                                          NSUnderlineColorAttributeName: [UIColor lightGrayColor],
                                          NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)};
         

@@ -431,6 +431,8 @@
     [self.view addSubview:self.callScriptView];
     
     [UIView animateWithDuration:0.5 animations:^{
+        OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
+        oppCard.alpha = 0.0;
         CGRect frame = self.callScriptView.frame;
         frame.origin.y = self.opportunityScrollView.frame.origin.y;
         self.callScriptView.frame = frame;
@@ -443,6 +445,8 @@
         CGRect frame = self.callScriptView.frame;
         frame.origin.y = self.view.frame.size.height;
         self.callScriptView.frame = frame;
+        OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
+        oppCard.alpha = 1.0;
     } completion:^(BOOL finished) {
         [self.callScriptView removeFromSuperview];
         _callScriptView = nil;
@@ -471,13 +475,11 @@
         // device cannot do phone calls
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = @"Phone functions not available on your device";
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            // Do something...
+        dispatch_after(2.5, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
         });
-        
     }
 }
 

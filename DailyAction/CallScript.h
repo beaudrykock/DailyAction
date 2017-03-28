@@ -25,6 +25,7 @@
 
 @interface CallScript : UIView <UITextViewDelegate>
 
+@property (nonatomic, strong) IBOutlet UIView *titleContainer;
 @property (nonatomic, strong) IBOutlet UIView *scriptContainer;
 @property (nonatomic, strong) IBOutlet UILabel *lb_actionTitle;
 @property (nonatomic, strong) IBOutlet UITextView *tv_actionScript;
