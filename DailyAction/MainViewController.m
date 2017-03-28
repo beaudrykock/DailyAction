@@ -285,7 +285,7 @@
         {
             UITextField *login = alertController.textFields.firstObject;
             
-            if ([login.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location == NSNotFound && login.text.length >= 2)
+            if ([login.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound && login.text.length >= 2)
             {
                 self.okAction.enabled = YES;
             }
