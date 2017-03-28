@@ -421,6 +421,7 @@
 {
     self.callScriptView = [[[NSBundle mainBundle] loadNibNamed:@"CallScriptView" owner:self options:nil] objectAtIndex:0];
     self.callScriptView.delegate = self;
+    [self.callScriptView parameterizeWithOpportunity: [[OpportunityDataManager sharedInstance] opportunityWithID:self.currentlyDisplayedOpportunityID]];
     
     CGRect frame = self.callScriptView.frame;
     frame.origin.x = (self.view.frame.size.width-self.callScriptView.frame.size.width)/2.0;

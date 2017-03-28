@@ -76,9 +76,17 @@
                                  value:@"newname://"
                                  range:[[attributedString string] rangeOfString:nameText]];
         
-        [attributedString addAttribute:NSLinkAttributeName
-                                 value:@"newcity://"
-                                 range:[[attributedString string] rangeOfString:cityText]];
+        [attributedString addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:@"Avenir-Book" size:14.0]
+                                 range:NSMakeRange(0, attributedString.length)];
+
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                                 value:[UIColor blackColor]
+                                 range:NSMakeRange(0, attributedString.length)];
+        
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor redColor]
+                       range:[[attributedString string] rangeOfString:nameText]];
         
         self.tv_actionScript.linkTextAttributes = linkAttributes;
         self.tv_actionScript.attributedText = attributedString;

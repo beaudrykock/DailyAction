@@ -19,18 +19,11 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="488"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UjF-WR-iMb">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UjF-WR-iMb">
                             <rect key="frame" x="23" y="66" width="329" height="310"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <string key="text">Hi, my name is [Tap_to_add_name] and I’m a constituent fron San Francisco.
-
-I’m calling to make sure Senator Feinstein knows the depth of my concern around the nomination of Jeff Sessions.
-
-I’s imperactive that she block Jeff Sessions’ nomination to Attorney General. Jeff Sessions’ approval would set back the cause of American civil rights and liberties a generation. I’m incredibly concerned. I expect to read that Senator Feinstein did all she could to stop the nomination.
-
-Thanks for your hard work answering the phones.</string>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <attributedString key="attributedText"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGY-QS-PHf">
@@ -79,6 +72,9 @@ Thanks for your hard work answering the phones.</string>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tv_actionScript" destination="UjF-WR-iMb" id="5LF-r5-6hE"/>
+            </connections>
             <point key="canvasLocation" x="73.5" y="54"/>
         </view>
     </objects>

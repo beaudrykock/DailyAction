@@ -21,6 +21,7 @@
 @property (nonatomic, assign) BOOL contentAvailable;
 @property (nonatomic, assign) BOOL contentUpdated;
 
+- (Opportunity*)opportunityWithID:(NSNumber*)opportunityID;
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities;
 - (void)createActionsWithData:(NSDictionary*)actions;
 - (void)createPhoneActionsWithData:(NSDictionary*)phoneActions;

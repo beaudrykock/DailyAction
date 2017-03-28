@@ -43,6 +43,18 @@
     return nil;
 }
 
+- (Opportunity*)opportunityWithID:(NSNumber *)opportunityID
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    RLMResults<Opportunity*> *opportunities = [Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"opportunityID = %@", opportunityID]];
+    
+    if (opportunities.count>0)
+        return [opportunities objectAtIndex:0];
+    
+    return nil;
+}
+
 - (BOOL)opportunityAvailable
 {
     RLMRealm *realm = [RLMRealm defaultRealm];

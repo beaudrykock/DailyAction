@@ -34,6 +34,7 @@
 @property (nonatomic, strong) UIAlertAction *okAction;
 @property (nonatomic, assign) id delegate;
 
+- (void)parameterizeWithOpportunity:(Opportunity*)opportunity;
 - (void)generateScript;
 
 @end
