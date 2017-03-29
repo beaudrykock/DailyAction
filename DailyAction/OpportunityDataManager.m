@@ -112,6 +112,7 @@
     {
         [realm beginWriteTransaction];
         opportunities[0].actedOn = YES;
+        opportunities[0].actedOnDate = [NSDate date];
         [realm addOrUpdateObject:opportunities[0]];
         [realm commitWriteTransaction];
     }

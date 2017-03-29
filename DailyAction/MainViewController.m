@@ -465,11 +465,23 @@
     
     if ([UIApplication.sharedApplication canOpenURL:phoneUrl]) {
         [UIApplication.sharedApplication openURL:phoneUrl options:@{} completionHandler:^(BOOL success) {
-            
+            if (success)
+            {
+                // mark as done
+                [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+                
+                [self refreshOpportunityViews];
+            }
         }];
     } else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
         [UIApplication.sharedApplication openURL:phoneFallbackUrl options:@{} completionHandler:^(BOOL success) {
-            
+            if (success)
+            {
+                // mark as done
+                [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+                
+                [self refreshOpportunityViews];
+            }
         }];
     } else {
         // device cannot do phone calls
