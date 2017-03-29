@@ -122,19 +122,25 @@
     // set size of scrollview x opportunity count of current width
     self.opportunityScrollView.contentSize = CGSizeMake(self.opportunityScrollView.frame.size.width*oppCount, self.opportunityScrollView.frame.size.height);
     
-    // position scrollview at last page
+    
+    // opportunity views created in order of acted-on then today's (last slot)
+    for (int i = 0; i<oppCount-1; i++)
+    {
+        [self createOpportunityViewAtPage: i];
+    }
+    
+    // finally, create today's
+    [self createOpportunityViewAtPage:oppCount-1];
+    
+    // now position scrollview at last page (always most current)
     self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0);
     
+    // always reset the current page to 0
     self.pageControl.currentPage = [self currentPage];
+    self.lastPage = self.pageControl.currentPage;
     
-    self.lastPage = [self currentPage];
     
-    // Setting up Opportunity cards
-    [self createOpportunityViewAtPage: [self currentPage]];
-    
-    if (oppCount>1)
-        [self createOpportunityViewAtPage: [self currentPage]-1];
-    
+    // position
     [self refreshTitleView];
 }
 
@@ -329,6 +335,7 @@
         // mark as done
         [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
         
+        // TODO - show post-action interface
         [self refreshOpportunityViews];
     }
     
@@ -470,6 +477,8 @@
                 // mark as done
                 [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
                 
+                // TODO - show post-action interface
+                
                 [self refreshOpportunityViews];
             }
         }];
@@ -479,6 +488,8 @@
             {
                 // mark as done
                 [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+                
+                // TODO - show post-action interface
                 
                 [self refreshOpportunityViews];
             }
