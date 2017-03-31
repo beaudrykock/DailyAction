@@ -97,8 +97,10 @@
     
     self.titleView.lb_title.text = opp.summary;
     
-   
-    self.titleView.lb_date.text = [dateFormatter stringFromDate:[NSDate date]];
+    if (!opp.actedOn)
+        self.titleView.lb_date.text = [dateFormatter stringFromDate:[NSDate date]];
+    else
+        self.titleView.lb_date.text = [dateFormatter stringFromDate:opp.actedOnDate];
 }
 
 - (void)refreshOpportunityViews
@@ -140,49 +142,75 @@
     // now position scrollview at last page (always most current)
     CGRect visibleView = CGRectMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0, self.view.frame.size.width, self.view.frame.size.height);
     
+    self.lazyLoaded = YES;
     [self.opportunityScrollView scrollRectToVisible:visibleView animated:YES];
+    self.lazyLoaded = NO;
     
     // always set to last position in the view
     self.pageControl.currentPage = oppCount-1;
-    self.lastPage = self.pageControl.currentPage;
+    self.lastPage = oppCount-1;
+
+    NSLog(@"page = %lu", [self currentPage]);
+    NSLog(@"last page = %lu", self.lastPage);
+    
     
     // position
     [self refreshTitleView];
 }
 
-# pragma mark -
+# pragma mark - Scrolling
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.lazyLoaded = NO;
+    self.contentOffset = self.opportunityScrollView.contentOffset.x;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // once scroll view passes 1/2 way, add previous-1 or +1 to stack
+    NSLog(@"fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset) = %f", fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset));
+    NSLog(@"page = %lu", [self currentPage]);
+    NSLog(@"last page = %lu", self.lastPage);
+    
+    if (fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset) > (self.opportunityScrollView.frame.size.width)/2 && !self.lazyLoaded)
+    {
+        [self lazyLoadViews];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
-    NSLog(@"page = %lu", [self currentPage]);
+//    NSLog(@"page = %lu", [self currentPage]);
+//    NSLog(@"last page = %lu", self.lastPage);
     
-    self.pageControl.currentPage = [self currentPage];
+   
+}
+
+- (void)lazyLoadViews
+{
     
-    if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
-    
-        return;
-    }
-    else {
-        if (([self currentPage]-1)>=0)
-        {
-            NSLog(@"Creating view at page %lu", [self currentPage]-1);
-            // view is missing, create it and set its tag to currentPage+1
-            [self createOpportunityViewAtPage:[self currentPage]-1];
+        self.lazyLoaded = YES;
+        
+        self.pageControl.currentPage = [self currentPage];
+        
+        if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
+            
+            return;
         }
-    }
-    
-    // now check if we're on a new page, in which case the title view must be updated
-    if ([self currentPage] != _lastPage)
-    {
-        _lastPage = [self currentPage];
+        else {
+            if (([self currentPage]-1)>=0)
+            {
+                NSLog(@"Creating view at page %lu", [self currentPage]-1);
+                // view is missing, create it and set its tag to currentPage+1
+                [self createOpportunityViewAtPage:[self currentPage]-1];
+            }
+        }
+        
+        NSLog(@"On a new page");
+        self.lastPage = [self currentPage];
         
         [self refreshTitleView];
-    }
+    
 }
 
 - (NSInteger)currentPage
