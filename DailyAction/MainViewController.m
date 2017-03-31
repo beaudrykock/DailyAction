@@ -159,63 +159,71 @@
 }
 
 # pragma mark - Scrolling
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    self.lazyLoaded = NO;
-    self.contentOffset = self.opportunityScrollView.contentOffset.x;
-}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset) = %f", fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset));
-    NSLog(@"page = %lu", [self currentPage]);
-    NSLog(@"last page = %lu", self.lastPage);
-    
-    if (fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset) > (self.opportunityScrollView.frame.size.width)/2 && !self.lazyLoaded)
+    if (!self.scrollStarted)
     {
-        [self lazyLoadViews];
+        self.contentOffset = self.opportunityScrollView.contentOffset.x;
+        self.scrollStarted = YES;
+    }
+    
+//    NSLog(@"fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset) = %f", fabs(self.opportunityScrollView.contentOffset.x-self.contentOffset));
+//    NSLog(@"self.opportunityScrollView.frame.size.width)/2 = %f", (self.opportunityScrollView.frame.size.width)/2);
+//    NSLog(@"page = %lu", [self currentPage]);
+//    NSLog(@"last page = %lu", self.lastPage);
+//    NSLog(@"lazyLoaded = %d", self.lazyLoaded);
+    
+    if ([self currentPage] != self.lastPage && !self.lazyLoaded)
+    {
+        self.titleViewPage = [self currentPage];
+        
+        self.lazyLoaded = YES;
+        
+        [self refreshTitleView];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
+//    NSLog(@"scroll decelerated");
 //    NSLog(@"page = %lu", [self currentPage]);
 //    NSLog(@"last page = %lu", self.lastPage);
+    self.pageControl.currentPage = [self currentPage];
+    self.lastPage = [self currentPage];
+    self.lazyLoaded = NO;
     
-   
-}
-
-- (void)lazyLoadViews
-{
+    self.scrollStarted = NO;
     
-        self.lazyLoaded = YES;
-        
-        self.pageControl.currentPage = [self currentPage];
-        
-        if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
-            
-            return;
-        }
-        else {
-            if (([self currentPage]-1)>=0)
-            {
-                NSLog(@"Creating view at page %lu", [self currentPage]-1);
-                // view is missing, create it and set its tag to currentPage+1
-                [self createOpportunityViewAtPage:[self currentPage]-1];
-            }
-        }
-        
-        NSLog(@"On a new page");
-        self.lastPage = [self currentPage];
-        
+//    NSLog(@"page = %lu", [self currentPage]);
+//    NSLog(@"last page = %lu", self.lastPage);
+//    NSLog(@"title view page = %lu", self.titleViewPage);
+    
+    // final check to make sure we didn't return to the same page we started at
+    if (self.titleViewPage != [self currentPage])
         [self refreshTitleView];
     
+    if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
+        
+        return;
+    }
+    else {
+        if (([self currentPage]-1)>=0)
+        {
+            NSLog(@"Creating view at page %lu", [self currentPage]-1);
+            // view is missing, create it and set its tag to currentPage+1
+            [self createOpportunityViewAtPage:[self currentPage]-1];
+        }
+    }
 }
 
 - (NSInteger)currentPage
 {
-    return self.opportunityScrollView.contentOffset.x / self.opportunityScrollView.frame.size.width;
+    CGFloat width = self.opportunityScrollView.frame.size.width;
+    return (self.opportunityScrollView.contentOffset.x + (0.5f * width)) / width;
+    
+//    return self.opportunityScrollView.contentOffset.x / self.opportunityScrollView.frame.size.width;
 }
 
 - (void)createOpportunityViewAtPage:(NSInteger)page

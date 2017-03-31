@@ -16,6 +16,8 @@
 
 @interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate, CallScriptDelegate, OpportunityCardDelegate>
 
+@property (nonatomic, assign) NSInteger titleViewPage;
+@property (nonatomic, assign) BOOL scrollStarted;
 @property (nonatomic, assign) BOOL lazyLoaded;
 @property (nonatomic, assign) float contentOffset;
 @property (nonatomic, strong) NSNumber *currentlyDisplayedOpportunityID;

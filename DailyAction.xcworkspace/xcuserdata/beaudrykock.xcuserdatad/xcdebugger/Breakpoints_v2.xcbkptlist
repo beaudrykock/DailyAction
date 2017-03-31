@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "512626460.19216"
+            timestampString = "512628999.448509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "-createOpportunityViewAtPage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "512626460.19216"
+            timestampString = "512628999.448509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-createOpportunityViewAtPage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "512626460.19216"
+            timestampString = "512628999.448509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "-mailComposeController:didFinishWithResult:error:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "512626460.19216"
+            timestampString = "512628999.448509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
             landmarkName = "-makeCall"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "512626460.19216"
+            timestampString = "512628999.448509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "519"
-            endingLineNumber = "519"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "-makeCall"
             landmarkType = "7">
          </BreakpointContent>
@@ -224,22 +224,6 @@
             startingLineNumber = "40"
             endingLineNumber = "40"
             landmarkName = "-parameterizeWithOpportunity:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DailyAction/MainViewController.m"
-            timestampString = "512626122.294945"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-scrollViewWillBeginDragging:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
