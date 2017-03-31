@@ -79,6 +79,9 @@
     // parameterize title view
     RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] actedOnOpportunities];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"MMM dd";
+    
     Opportunity *opp;
     
     if ([self currentPage] == opportunities.count)
@@ -87,21 +90,22 @@
     }
     else
     {
-        opp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
+        opp = [opportunities objectAtIndex:[self currentPage]];
     }
     
     self.currentlyDisplayedOpportunityID = opp.opportunityID;
     
     self.titleView.lb_title.text = opp.summary;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MMM dd";
+   
     self.titleView.lb_date.text = [dateFormatter stringFromDate:[NSDate date]];
 }
 
 - (void)refreshOpportunityViews
 {
-    NSInteger oppCount = [[OpportunityDataManager sharedInstance] countOfActedOnOpportunities]+1; // 1 extra for today's, if 0 or otherwise less than OPPORTUNITIES_LIMIT
+    NSInteger oppCount = [[OpportunityDataManager sharedInstance] countOfActedOnOpportunities]; // 1 extra for today's, if 0 or otherwise less than OPPORTUNITIES_LIMIT
+    BOOL freshOppExists = ([[OpportunityDataManager sharedInstance] todaysOpportunity] != nil);
+    if (freshOppExists) oppCount++;
     
     if (oppCount > OPPORTUNITIES_LIMIT)
         oppCount = OPPORTUNITIES_LIMIT;
@@ -123,7 +127,7 @@
     self.opportunityScrollView.contentSize = CGSizeMake(self.opportunityScrollView.frame.size.width*oppCount, self.opportunityScrollView.frame.size.height);
     
     
-    // opportunity views created in order of acted-on then today's (last slot)
+    // opportunity views created in order of acted-on then today's (last slot; there may not be an action for today)
     for (int i = 0; i<oppCount-1; i++)
     {
         [self createOpportunityViewAtPage: i];
@@ -132,13 +136,15 @@
     // finally, create today's
     [self createOpportunityViewAtPage:oppCount-1];
     
+    
     // now position scrollview at last page (always most current)
-    self.opportunityScrollView.contentOffset = CGPointMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0);
+    CGRect visibleView = CGRectMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0, self.view.frame.size.width, self.view.frame.size.height);
     
-    // always reset the current page to 0
-    self.pageControl.currentPage = [self currentPage];
+    [self.opportunityScrollView scrollRectToVisible:visibleView animated:YES];
+    
+    // always set to last position in the view
+    self.pageControl.currentPage = oppCount-1;
     self.lastPage = self.pageControl.currentPage;
-    
     
     // position
     [self refreshTitleView];
@@ -196,7 +202,7 @@
     opportunity.tag = page;
     
     // for today's action
-    if (page == opportunities.count)
+    if (page == opportunities.count && ([[OpportunityDataManager sharedInstance] todaysOpportunity] != nil))
     {
         Opportunity *todaysOpp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
         
@@ -501,6 +507,14 @@
         dispatch_after(2.5, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                // test
+                // mark as done
+                [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+                
+                // TODO - show post-action interface
+                
+                [self refreshOpportunityViews];
             });
         });
     }

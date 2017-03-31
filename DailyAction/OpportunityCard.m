@@ -36,10 +36,19 @@
     self.lb_ease.text = [Utilities easeFromIndex:opportunity.difficulty.integerValue];
     self.lb_actionsTaken.text = [NSString stringWithFormat:@"%u actions taken",arc4random_uniform(1000)];
     
-    if (opportunity.actedOn)
+    BOOL actedOn = opportunity.actedOn;
+    
+    if (actedOn)
+    {
         self.iv_actedOn.hidden = NO;
+        self.btn_action.enabled = NO;
+        
+    }
     else
+    {
         self.iv_actedOn.hidden = YES;
+        self.btn_action.enabled = YES;
+    }
     
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:opportunity.opportunityID];
     
@@ -54,14 +63,22 @@
         
         [string beginEditing];
         
-        [string addAttribute:NSFontAttributeName
-                       value:[UIFont fontWithName:@"Avenir-Heavy" size:18.0]
-                       range:selectedRange];
-        
-        [string addAttribute:NSForegroundColorAttributeName
+        if (!actedOn)
+        {
+            [string addAttribute:NSFontAttributeName
+                           value:[UIFont fontWithName:@"Avenir-Heavy" size:18.0]
+                           range:selectedRange];
+            
+            [string addAttribute:NSForegroundColorAttributeName
                        value:[UIColor blackColor]
                        range:NSMakeRange(0, string.length)];
-        
+        }
+        else
+        {
+            [string addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor colorWithRed:215.0/255.0 green:215.0/255.0 blue:215.0/255.0 alpha:1.0]
+                           range:NSMakeRange(0, string.length)];
+        }
         [string endEditing];
         
         [self.btn_action setAttributedTitle:string forState:UIControlStateNormal];
@@ -74,16 +91,25 @@
         NSRange selectedRange = NSMakeRange(5, phoneAction.phoneName.length); // 4 characters, starting at index 22
         
         [string beginEditing];
-        
-        [string addAttribute:NSFontAttributeName
-                       value:[UIFont fontWithName:@"Avenir-Heavy" size:18.0]
-                       range:selectedRange];
-        
+        if (!actedOn)
+        {
+            [string addAttribute:NSFontAttributeName
+                           value:[UIFont fontWithName:@"Avenir-Heavy" size:18.0]
+                           range:selectedRange];
+        }
+        else
+        {
+            [string addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor colorWithRed:215.0/255.0 green:215.0/255.0 blue:215.0/255.0 alpha:1.0]
+                           range:NSMakeRange(0, string.length)];
+        }
         [string endEditing];
 
         
         [self.btn_action setAttributedTitle:string forState:UIControlStateNormal];
     }
+    
+    
 }
 
 - (IBAction)takeAction:(id)sender
