@@ -95,6 +95,9 @@
     // finally, create today's
     [self createOpportunityViewAtPage:oppCount-1];
     
+    // set today's opp as opp ID currently displayed
+    Opportunity *todaysOpp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
+    self.currentlyDisplayedOpportunityID = todaysOpp.opportunityID;
     
     // now position scrollview at last page (always most current)
     CGRect visibleView = CGRectMake(self.opportunityScrollView.frame.size.width*(oppCount-1), 0.0, self.view.frame.size.width, self.view.frame.size.height);
@@ -145,6 +148,19 @@
     self.lazyLoaded = NO;
     
     self.scrollStarted = NO;
+    
+    RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] actedOnOpportunities];
+    
+    if ([self currentPage] == opportunities.count && ([[OpportunityDataManager sharedInstance] todaysOpportunity] != nil))
+    {
+        Opportunity *todaysOpp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
+        
+        self.currentlyDisplayedOpportunityID = todaysOpp.opportunityID;
+    }
+    else
+    {
+        self.currentlyDisplayedOpportunityID = [opportunities objectAtIndex:[self currentPage]].opportunityID;
+    }
     
 //    NSLog(@"page = %lu", [self currentPage]);
 //    NSLog(@"last page = %lu", self.lastPage);
@@ -427,9 +443,9 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
-        oppCard.alpha = 0.0;
+        [oppCard setPortionsToAlpha:0.0];
         CGRect frame = self.callScriptView.frame;
-        frame.origin.y = self.opportunityScrollView.frame.origin.y;
+        frame.origin.y = self.opportunityScrollView.frame.origin.y+77.0;
         self.callScriptView.frame = frame;
     }];
 }
@@ -441,7 +457,7 @@
         frame.origin.y = self.view.frame.size.height;
         self.callScriptView.frame = frame;
         OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
-        oppCard.alpha = 1.0;
+        [oppCard setPortionsToAlpha:1.0];
     } completion:^(BOOL finished) {
         [self.callScriptView removeFromSuperview];
         _callScriptView = nil;
@@ -449,7 +465,7 @@
 }
 
 - (void)makeCall
-{
+{   
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.currentlyDisplayedOpportunityID];
     
     // get the subaction
@@ -466,6 +482,7 @@
                 [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
                 
                 // TODO - show post-action interface
+                [self showActionFeedback];
                 
                 [self refreshOpportunityViews];
             }
@@ -478,6 +495,7 @@
                 [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
                 
                 // TODO - show post-action interface
+                [self showActionFeedback];
                 
                 [self refreshOpportunityViews];
             }
@@ -495,6 +513,7 @@
                 [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
                 
                 // TODO - show post-action interface
+                 [self showActionFeedback];
                 
                 [self refreshOpportunityViews];
             });

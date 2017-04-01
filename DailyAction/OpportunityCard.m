@@ -94,6 +94,10 @@
         [string beginEditing];
         if (!actedOn)
         {
+            [string addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor blackColor]
+                           range:NSMakeRange(0, string.length)];
+            
             [string addAttribute:NSFontAttributeName
                            value:[UIFont fontWithName:@"Avenir-Heavy" size:18.0]
                            range:selectedRange];
@@ -128,6 +132,13 @@
         self.lb_date_title.text = @"ACTED ON";
         self.lb_date.text = [[dateFormatter stringFromDate:opportunity.actedOnDate] uppercaseString];
     }
+}
+
+- (void)setPortionsToAlpha:(float)alpha
+{
+    self.inner_container.alpha = alpha;
+    self.btn_action.alpha = alpha;
+    self.iv_linker.alpha = alpha;
 }
 
 - (IBAction)takeAction:(id)sender

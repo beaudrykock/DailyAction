@@ -64,19 +64,31 @@
         [self.lb_title setAttributedText:string];
     }
     
-    UITapGestureRecognizer *singleTap =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedFeedback:)];
-    [singleTap setNumberOfTapsRequired:1];
+    UITapGestureRecognizer *singleTap_0 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedFeedback:)];
+    [singleTap_0 setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *singleTap_1 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedFeedback:)];
+    [singleTap_1 setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *singleTap_2 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedFeedback:)];
+    [singleTap_2 setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *singleTap_3 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedFeedback:)];
+    [singleTap_3 setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *singleTap_4 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedFeedback:)];
+    [singleTap_4 setNumberOfTapsRequired:1];
     
     self.feedback_0.tag = 0;
-    [self.feedback_0 addGestureRecognizer:singleTap];
+    [self.feedback_0 addGestureRecognizer:singleTap_0];
     self.feedback_1.tag = 1;
-    [self.feedback_1 addGestureRecognizer:singleTap];
+    [self.feedback_1 addGestureRecognizer:singleTap_1];
     self.feedback_2.tag = 2;
-    [self.feedback_2 addGestureRecognizer:singleTap];
+    [self.feedback_2 addGestureRecognizer:singleTap_2];
     self.feedback_3.tag = 3;
-    [self.feedback_3 addGestureRecognizer:singleTap];
+    [self.feedback_3 addGestureRecognizer:singleTap_3];
     self.feedback_4.tag = 4;
-    [self.feedback_4 addGestureRecognizer:singleTap];
+    [self.feedback_4 addGestureRecognizer:singleTap_4];
 }
 
 - (void)tappedFeedback:(UIGestureRecognizer*)recognizer

@@ -27,6 +27,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *lb_date;
 @property (nonatomic, strong) IBOutlet UIView *date_container;
 @property (nonatomic, strong) IBOutlet UIImageView *iv_actedOn;
+@property (nonatomic, strong) IBOutlet UIImageView *iv_linker;
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSNumber *actionType;
 @property (nonatomic, assign) NSNumber *opportunityID;
@@ -39,6 +40,8 @@
 @property (nonatomic, strong) IBOutlet UIView *inner_container;
 @property (nonatomic, strong) IBOutlet UIView *dividingLine;
 
+
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity;
+- (void)setPortionsToAlpha:(float)alpha;
 
 @end

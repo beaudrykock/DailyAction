@@ -153,6 +153,7 @@
                 <outlet property="dividingLine" destination="8gg-aQ-7w2" id="hWd-tS-Zo2"/>
                 <outlet property="inner_container" destination="0Cc-br-3rx" id="9Cc-O8-d9E"/>
                 <outlet property="iv_actedOn" destination="zp6-ad-sJM" id="D4m-a6-xJM"/>
+                <outlet property="iv_linker" destination="ZHL-dh-nuJ" id="52J-Ab-33Y"/>
                 <outlet property="lb_actionsTaken" destination="c4J-Di-qYI" id="zcP-kh-ZZH"/>
                 <outlet property="lb_criticality" destination="sIp-jT-kef" id="OpM-w2-A3C"/>
                 <outlet property="lb_date" destination="6mm-mL-G3j" id="RBw-xn-IpD"/>

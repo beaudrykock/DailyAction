@@ -61,7 +61,7 @@
     
     RLMResults<Opportunity*> *opportunities = [[Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate >= %@ AND actedOn = NO", [NSDate date]]] sortedResultsUsingKeyPath:@"dueDate" ascending:NO];
     
-    return opportunities.count>0 || [self actedOnOpportunities]>0;
+    return opportunities.count>0 || [self countOfActedOnOpportunities] >0;
 }
 
 - (RLMResults<Opportunity*>*)actedOnOpportunities
