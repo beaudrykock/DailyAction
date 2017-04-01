@@ -361,7 +361,6 @@
         // mark as done
         [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
         
-        // TODO - show post-action interface
         [self refreshOpportunityViews];
     }
     
