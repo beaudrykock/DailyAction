@@ -528,9 +528,9 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
-        oppCard.alpha = 0.0;
+        [oppCard setPortionsToAlpha:0.0];
         CGRect frame = self.feedback.frame;
-        frame.origin.y = self.opportunityScrollView.frame.origin.y;
+        frame.origin.y = self.opportunityScrollView.frame.origin.y+77.0;
         self.feedback.frame = frame;
     }];
 }
@@ -554,7 +554,7 @@
         frame.origin.y = self.view.frame.size.height;
         self.feedback.frame = frame;
         OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
-        oppCard.alpha = 1.0;
+        [oppCard setPortionsToAlpha:1.0];
     } completion:^(BOOL finished) {
         [self.feedback removeFromSuperview];
         _feedback = nil;
