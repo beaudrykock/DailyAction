@@ -23,8 +23,231 @@
 
 - (void)setup
 {
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (!user)
+    {
+        User *user = [[User alloc] init];
+        [Utilities createNewUDID];
+        user.uuid = [Utilities UDID];
+        [realm beginWriteTransaction];
+        [realm addObject:user];
+        [realm commitWriteTransaction];
+    }
+    
+    // sets if doesn't exist
+    [self setUserVotingZipcode];
+ }
 
+- (NSString*)userFullName
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        if (user.firstName && user.lastName)
+        {
+            return [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+        }
+    }
+    
+    return @"";
 }
+
+- (NSString*)userCity
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        if (user.city)
+        {
+            return user.city;
+        }
+    }
+    
+    return @"";
+}
+
+- (void)updateUserFullName:(NSString *)fullname
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [self currentUserInRealm:realm];
+    
+    NSArray *chunks = [fullname componentsSeparatedByString: @" "];
+    
+    if (user)
+    {
+        [realm beginWriteTransaction];
+        user.firstName = chunks[0];
+        user.lastName = chunks[1];
+        [realm addOrUpdateObject:user];
+        [realm commitWriteTransaction];
+    }
+}
+
+// only for setting if zipcode doesn't already exist, based on location
+- (void)setUserVotingZipcode
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+
+    if (!user.zipcode)
+    {
+        INTULocationManager *locMgr = [INTULocationManager sharedInstance];
+        
+        [locMgr requestLocationWithDesiredAccuracy:INTULocationAccuracyCity
+                                           timeout:10.0
+                              delayUntilAuthorized:YES  // This parameter is optional, defaults to NO if omitted
+                                             block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+                                                 if (status == INTULocationStatusSuccess) {
+                                                     // Request succeeded, meaning achievedAccuracy is at least the requested accuracy, and
+                                                     // currentLocation contains the device's current location.
+                                                     [self updateUserZipFromLocation:currentLocation];
+                                                 }
+                                                 else if (status == INTULocationStatusTimedOut) {
+                                                     // Wasn't able to locate the user with the requested accuracy within the timeout interval.
+                                                     // However, currentLocation contains the best location available (if any) as of right now,
+                                                     // and achievedAccuracy has info on the accuracy/recency of the location in currentLocation.
+                                                 }
+                                                 else {
+                                                     // An error occurred, more info is available by looking at the specific status returned.
+                                                 }
+                                             }];
+    }
+}
+
+// writes over zip whether set or not
+- (void)updateUserVotingZipcode:(NSString*)zipcode
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        [realm beginWriteTransaction];
+        user.zipcode = zipcode;
+        [realm addOrUpdateObject:user];
+        [realm commitWriteTransaction];
+    }
+}
+
+// writes over locality whether set or not
+- (void)updateUserVotingLocality:(NSString*)locality
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        [realm beginWriteTransaction];
+        user.city = locality;
+        [realm addOrUpdateObject:user];
+        [realm commitWriteTransaction];
+    }
+}
+
+// writes over location source whether set or not
+- (void)updateUserLocationSource:(NSString*)source
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+    {
+        [realm beginWriteTransaction];
+        user.locationSource = source;
+        [realm addOrUpdateObject:user];
+        [realm commitWriteTransaction];
+    }
+}
+
+// call when user has manually corrected zip
+- (void)updateUserVotingLocalityFromZipcode:(NSString*)zipcode
+{
+    [[CLGeocoder new] geocodeAddressString:zipcode completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (placemarks.count) {
+            CLPlacemark *placemark = placemarks.firstObject;
+            
+            NSString *city = placemark.locality;
+            
+            [self updateUserVotingLocality:city];
+            
+             [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_USER_LOCATION object:nil];
+        }
+    }];
+}
+
+- (void)updateUserZipFromLocation:(CLLocation*)location
+{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (!(error))
+         {
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSString *zipcode = [[NSString alloc]initWithString:placemark.postalCode];
+             NSString *shortZip;
+             if (zipcode.length>5)
+                 shortZip = [zipcode substringToIndex:5];
+             else
+                 shortZip = zipcode;
+             NSLog(@"Zipcode: %@",shortZip);
+             
+             [self updateUserVotingZipcode:shortZip];
+             [self updateUserVotingLocality:placemark.locality];
+             [self updateUserLocationSource:AUTO];
+             
+             [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_USER_LOCATION object:nil];
+         }
+         else
+         {
+             NSLog(@"Geocode failed with error %@", error); // Error handling must required
+         }
+     }];
+}
+
+- (NSString*)userVotingZip
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+        return user.zipcode;
+    return nil;
+}
+
+- (NSString*)userLocationSource
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+        return user.locationSource;
+    return nil;
+}
+
+- (NSString*)userVotingLocality
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    User *user = [self currentUserInRealm:realm];
+    
+    if (user)
+        return user.city;
+    return nil;
+}
+
 
 //
 //- (void)awardPointsForRouteUID:(NSString *)route_uid
@@ -262,15 +485,15 @@
 //    return badgeAwards;
 //}
 //
-//- (Rider*)currentRiderInRealm:(RLMRealm*)realm
-//{
-//    RLMResults <Rider*> *riders = [Rider objectsInRealm: realm withPredicate:[NSPredicate predicateWithFormat:@"uuid = %@", [Utilities UDID]]];
-//    
-//    if (riders.count >= 1)
-//        return riders[0];
-//    
-//    return nil;
-//}
+- (User*)currentUserInRealm:(RLMRealm*)realm
+{
+    RLMResults <User*> *users = [User objectsInRealm: realm withPredicate:[NSPredicate predicateWithFormat:@"uuid = %@", [Utilities UDID]]];
+    
+    if (users.count >= 1)
+        return users[0];
+    
+    return nil;
+}
 //
 //- (Level *)levelWithDescription:(NSString*)description inRealm: (RLMRealm*)realm
 //{

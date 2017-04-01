@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1C3C04EC7E6FC24199648A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB8E29A0C8329167EF128D6 /* QuartzCore.framework */; };
+		2AA49483417E3D3EF8FC9D22 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CFC971FF6410ADEEF136CE /* CoreVideo.framework */; };
+		690C512A24BEE2E3687CB12E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDA6EF93718E2B2A88E0F04 /* CoreTelephony.framework */; };
+		6B6F8A2B9BFB5230A17CCCD3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63EC8C2B60821437AD8E943 /* CoreMedia.framework */; };
+		970F4EB73B8D4E0EACF830D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B888F32CB8D9BF0EA0C430D9 /* AVFoundation.framework */; };
+		9E5C11278A4EA7F029AEFFCA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ACEE22E5B2550FB1AF2B35 /* SystemConfiguration.framework */; };
 		9F7C14941E6E09D700E21B16 /* PhoneAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14931E6E09D700E21B16 /* PhoneAction.m */; };
 		9F7C14971E6E0BC300E21B16 /* EmailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14961E6E0BC300E21B16 /* EmailAction.m */; };
 		9F7C149A1E6E135400E21B16 /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14991E6E135400E21B16 /* Issue.m */; };
-		9F7C14A21E6E16EB00E21B16 /* ActionCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A11E6E16EB00E21B16 /* ActionCard.m */; };
-		9F7C14A41E6E171600E21B16 /* ActionCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7C14A31E6E171600E21B16 /* ActionCardView.xib */; };
+		9F7C14A21E6E16EB00E21B16 /* OpportunityCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */; };
 		9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */; };
 		9FAE76B21E61129200EE1378 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B11E61129200EE1378 /* main.m */; };
 		9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE76B41E61129200EE1378 /* AppDelegate.m */; };
@@ -23,20 +28,33 @@
 		9FC29C051E6E065F0070C43F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C041E6E065F0070C43F /* User.m */; };
 		9FC29C081E6E06F40070C43F /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C071E6E06F40070C43F /* Action.m */; };
 		9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C0B1E6E07E20070C43F /* Opportunity.m */; };
+		9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */; };
 		A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A90EB0F91E6E63A1009078ED /* Utilities.m */; };
+		A947BE5B1E8F516400E5B867 /* ActionFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */; };
+		A947BE5E1E8F517900E5B867 /* ActionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = A947BE5D1E8F517900E5B867 /* ActionFeedback.m */; };
+		A9D721211E906637007B3173 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9D721201E906637007B3173 /* GoogleService-Info.plist */; };
+		A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E28DEA1E889FA00013DB6E /* CallScript.m */; };
+		A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */; };
+		A9F4D8B61E7F1434005A8DE3 /* CloudDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */; };
+		A9F4D8B91E7F1485005A8DE3 /* ActionDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B81E7F1485005A8DE3 /* ActionDataManager.m */; };
 		C0122A38AF142BF90D8AC1FE /* Pods_DailyAction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A6015893ED16873D187425 /* Pods_DailyAction.framework */; };
+		CE4EB65161BA00B90F74EDC3 /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47EF658569FC8C5675D14DDE /* BuddyBuildSDK.framework */; };
+		D2F75C012FE3253B3F0E97E3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF7A06EBECFD0FF02DD2D2A /* AssetsLibrary.framework */; };
+		F785449572EBA6EB837F1226 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC78C7703E7C96CFB8D33CB /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AF7A06EBECFD0FF02DD2D2A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		47EF658569FC8C5675D14DDE /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
+		92CFC971FF6410ADEEF136CE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		9F7C14921E6E09D700E21B16 /* PhoneAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAction.h; sourceTree = "<group>"; };
 		9F7C14931E6E09D700E21B16 /* PhoneAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAction.m; sourceTree = "<group>"; };
 		9F7C14951E6E0BC300E21B16 /* EmailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailAction.h; sourceTree = "<group>"; };
 		9F7C14961E6E0BC300E21B16 /* EmailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailAction.m; sourceTree = "<group>"; };
 		9F7C14981E6E135400E21B16 /* Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Issue.h; sourceTree = "<group>"; };
 		9F7C14991E6E135400E21B16 /* Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Issue.m; sourceTree = "<group>"; };
-		9F7C14A01E6E16EB00E21B16 /* ActionCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCard.h; sourceTree = "<group>"; };
-		9F7C14A11E6E16EB00E21B16 /* ActionCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCard.m; sourceTree = "<group>"; };
-		9F7C14A31E6E171600E21B16 /* ActionCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCardView.xib; sourceTree = "<group>"; };
+		9F7C14A01E6E16EB00E21B16 /* OpportunityCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityCard.h; sourceTree = "<group>"; };
+		9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityCard.m; sourceTree = "<group>"; };
 		9F7C14A51E6E1C4000E21B16 /* OpportunityDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityDataManager.h; sourceTree = "<group>"; };
 		9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityDataManager.m; sourceTree = "<group>"; };
 		9FAE76AD1E61129200EE1378 /* DailyAction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyAction.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,11 +75,29 @@
 		9FC29C071E6E06F40070C43F /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
 		9FC29C0A1E6E07E20070C43F /* Opportunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Opportunity.h; sourceTree = "<group>"; };
 		9FC29C0B1E6E07E20070C43F /* Opportunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Opportunity.m; sourceTree = "<group>"; };
+		9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpportunityCardView.xib; sourceTree = "<group>"; };
 		A90EB0F81E6E63A1009078ED /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		A90EB0F91E6E63A1009078ED /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		A90EB0FB1E6E63BD009078ED /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionFeedbackView.xib; sourceTree = "<group>"; };
+		A947BE5C1E8F517900E5B867 /* ActionFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionFeedback.h; sourceTree = "<group>"; };
+		A947BE5D1E8F517900E5B867 /* ActionFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionFeedback.m; sourceTree = "<group>"; };
+		A9D721201E906637007B3173 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A9E28DE91E889FA00013DB6E /* CallScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallScript.h; sourceTree = "<group>"; };
+		A9E28DEA1E889FA00013DB6E /* CallScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallScript.m; sourceTree = "<group>"; };
+		A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallScriptView.xib; sourceTree = "<group>"; };
+		A9F4D8B41E7F1434005A8DE3 /* CloudDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudDataManager.h; sourceTree = "<group>"; };
+		A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudDataManager.m; sourceTree = "<group>"; };
+		A9F4D8B71E7F1485005A8DE3 /* ActionDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDataManager.h; sourceTree = "<group>"; };
+		A9F4D8B81E7F1485005A8DE3 /* ActionDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDataManager.m; sourceTree = "<group>"; };
 		AC0E4D801B2FD6AD4E8F277A /* Pods-DailyAction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAction.release.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction.release.xcconfig"; sourceTree = "<group>"; };
+		ADDA6EF93718E2B2A88E0F04 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B888F32CB8D9BF0EA0C430D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BEB8E29A0C8329167EF128D6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CCE2DB3B6707048971D37BE7 /* Pods-DailyAction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAction.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction.debug.xcconfig"; sourceTree = "<group>"; };
+		E1ACEE22E5B2550FB1AF2B35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E63EC8C2B60821437AD8E943 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		EFC78C7703E7C96CFB8D33CB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		F4A6015893ED16873D187425 /* Pods_DailyAction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyAction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +107,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0122A38AF142BF90D8AC1FE /* Pods_DailyAction.framework in Frameworks */,
+				CE4EB65161BA00B90F74EDC3 /* BuddyBuildSDK.framework in Frameworks */,
+				D2F75C012FE3253B3F0E97E3 /* AssetsLibrary.framework in Frameworks */,
+				F785449572EBA6EB837F1226 /* CoreText.framework in Frameworks */,
+				690C512A24BEE2E3687CB12E /* CoreTelephony.framework in Frameworks */,
+				9E5C11278A4EA7F029AEFFCA /* SystemConfiguration.framework in Frameworks */,
+				1E1C3C04EC7E6FC24199648A /* QuartzCore.framework in Frameworks */,
+				970F4EB73B8D4E0EACF830D6 /* AVFoundation.framework in Frameworks */,
+				6B6F8A2B9BFB5230A17CCCD3 /* CoreMedia.framework in Frameworks */,
+				2AA49483417E3D3EF8FC9D22 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +126,15 @@
 			isa = PBXGroup;
 			children = (
 				F4A6015893ED16873D187425 /* Pods_DailyAction.framework */,
+				47EF658569FC8C5675D14DDE /* BuddyBuildSDK.framework */,
+				0AF7A06EBECFD0FF02DD2D2A /* AssetsLibrary.framework */,
+				EFC78C7703E7C96CFB8D33CB /* CoreText.framework */,
+				ADDA6EF93718E2B2A88E0F04 /* CoreTelephony.framework */,
+				E1ACEE22E5B2550FB1AF2B35 /* SystemConfiguration.framework */,
+				BEB8E29A0C8329167EF128D6 /* QuartzCore.framework */,
+				B888F32CB8D9BF0EA0C430D9 /* AVFoundation.framework */,
+				E63EC8C2B60821437AD8E943 /* CoreMedia.framework */,
+				92CFC971FF6410ADEEF136CE /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,9 +151,15 @@
 		9F7C14A91E6E1CBC00E21B16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9F7C14A01E6E16EB00E21B16 /* ActionCard.h */,
-				9F7C14A11E6E16EB00E21B16 /* ActionCard.m */,
-				9F7C14A31E6E171600E21B16 /* ActionCardView.xib */,
+				9F7C14A01E6E16EB00E21B16 /* OpportunityCard.h */,
+				9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */,
+				9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */,
+				A947BE5C1E8F517900E5B867 /* ActionFeedback.h */,
+				A947BE5D1E8F517900E5B867 /* ActionFeedback.m */,
+				A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */,
+				A9E28DE91E889FA00013DB6E /* CallScript.h */,
+				A9E28DEA1E889FA00013DB6E /* CallScript.m */,
+				A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -134,6 +194,10 @@
 				9FC29C001E6DF9770070C43F /* UserDataManager.m */,
 				9F7C14A51E6E1C4000E21B16 /* OpportunityDataManager.h */,
 				9F7C14A61E6E1C4000E21B16 /* OpportunityDataManager.m */,
+				A9F4D8B41E7F1434005A8DE3 /* CloudDataManager.h */,
+				A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */,
+				A9F4D8B71E7F1485005A8DE3 /* ActionDataManager.h */,
+				A9F4D8B81E7F1485005A8DE3 /* ActionDataManager.m */,
 				A90EB0F81E6E63A1009078ED /* Utilities.h */,
 				A90EB0F91E6E63A1009078ED /* Utilities.m */,
 				A90EB0FB1E6E63BD009078ED /* Constants.h */,
@@ -141,6 +205,7 @@
 				9FAE76BC1E61129200EE1378 /* Assets.xcassets */,
 				9FAE76BE1E61129200EE1378 /* LaunchScreen.storyboard */,
 				9FAE76C11E61129200EE1378 /* Info.plist */,
+				A9D721201E906637007B3173 /* GoogleService-Info.plist */,
 				9FAE76B01E61129200EE1378 /* Supporting Files */,
 			);
 			path = DailyAction;
@@ -195,7 +260,6 @@
 				9FAE76AB1E61129200EE1378 /* Resources */,
 				E9ACF64BA84A3492FBA82D79 /* [CP] Embed Pods Frameworks */,
 				6129220AC7831E6C25552B7F /* [CP] Copy Pods Resources */,
-				9FC29C021E6DFAD20070C43F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,9 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAE76C01E61129200EE1378 /* LaunchScreen.storyboard in Resources */,
+				A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */,
 				9FAE76BD1E61129200EE1378 /* Assets.xcassets in Resources */,
-				9F7C14A41E6E171600E21B16 /* ActionCardView.xib in Resources */,
 				9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */,
+				9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */,
+				A947BE5B1E8F516400E5B867 /* ActionFeedbackView.xib in Resources */,
+				A9D721211E906637007B3173 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,19 +352,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9FC29C021E6DFAD20070C43F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e8b60c2295893496a6c9dd6353a7b1be4044a213 f722ab468ed4342807b5e020b4ce351d3e8c49cc523f1498e31ce97492d271c2";
-		};
 		E9ACF64BA84A3492FBA82D79 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,16 +375,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F7C14941E6E09D700E21B16 /* PhoneAction.m in Sources */,
+				A9F4D8B91E7F1485005A8DE3 /* ActionDataManager.m in Sources */,
 				9FC29C011E6DF9770070C43F /* UserDataManager.m in Sources */,
 				9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */,
 				9FAE76B81E61129200EE1378 /* MainViewController.m in Sources */,
 				9F7C14971E6E0BC300E21B16 /* EmailAction.m in Sources */,
 				9FC29C051E6E065F0070C43F /* User.m in Sources */,
 				9FC29C081E6E06F40070C43F /* Action.m in Sources */,
+				A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */,
 				9F7C149A1E6E135400E21B16 /* Issue.m in Sources */,
-				9F7C14A21E6E16EB00E21B16 /* ActionCard.m in Sources */,
+				9F7C14A21E6E16EB00E21B16 /* OpportunityCard.m in Sources */,
 				9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */,
+				A947BE5E1E8F517900E5B867 /* ActionFeedback.m in Sources */,
 				9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */,
+				A9F4D8B61E7F1434005A8DE3 /* CloudDataManager.m in Sources */,
 				A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */,
 				9FAE76B21E61129200EE1378 /* main.m in Sources */,
 			);
@@ -452,6 +510,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z362V38924;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DailyAction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Z362V38924.com.actionapp.actionapp;
@@ -465,6 +527,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z362V38924;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DailyAction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Z362V38924.com.actionapp.actionapp;

@@ -9,12 +9,23 @@
 #import <Foundation/Foundation.h>
 //#import "JSONParser.h"
 #import "User.h"
-//#import "Utilities.h"
+#import "Utilities.h"
 //#import <Crashlytics/Crashlytics.h>
 #import <Realm/Realm.h>
+#import "INTULocationManager.h"
 
 @interface UserDataManager : NSObject
 + (UserDataManager *) sharedInstance;
+
+- (void)updateUserVotingZipcode:(NSString*)zipcode;
+- (void)updateUserVotingLocalityFromZipcode:(NSString*)zipcode;
+- (NSString*)userVotingLocality;
+- (NSString*)userVotingZip;
+- (NSString*)userLocationSource;
+- (void)updateUserLocationSource:(NSString*)source;
+- (NSString*)userFullName;
+- (NSString*)userCity;
+- (void)updateUserFullName:(NSString*)fullname;
 
 //
 //- (NSInteger)lastPointsAwardForRider;

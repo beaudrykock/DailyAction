@@ -10,4 +10,14 @@
 
 @implementation Action
 
++ (NSString *)primaryKey
+{
+    return @"actionID";
+}
+
++ (NSDictionary *)defaultPropertyValues
+{
+    return @{@"actionID": [[NSUUID UUID] UUIDString]};
+}
+
 @end

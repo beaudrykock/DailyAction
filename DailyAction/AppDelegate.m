@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "Utilities.h"
+#import "UserDataManager.h"
+#import "CloudDataManager.h"
+#import <BuddyBuildSDK/BuddyBuildSDK.h>
 
 @interface AppDelegate ()
 
@@ -16,8 +20,26 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [BuddyBuildSDK setup];
+    
     // Override point for customization after application launch.
-        [Fabric with:@[[Crashlytics class]]];
+    
+    [UserDataManager sharedInstance];
+    
+    [CloudDataManager sharedInstance];
+    
+    [OpportunityDataManager sharedInstance];
+    
+    // Configure tracker from GoogleService-Info.plist.
+    NSError *configureError;
+    [[GGLContext sharedInstance] configureWithError:&configureError];
+    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    
+    // Optional: configure GAI options.
+    GAI *gai = [GAI sharedInstance];
+    gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
+    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+    
     return YES;
 }
 

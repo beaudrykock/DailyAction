@@ -11,10 +11,10 @@
 
 @interface PhoneAction : RLMObject
 
-@property NSInteger phoneActionID;
+@property NSNumber<RLMInt>* phoneActionID;
 @property NSString *phoneNumber;
 @property NSString *phoneName;
-@property NSString *script;
+@property NSString *phoneScript;
 
 @end
 

@@ -60,6 +60,52 @@
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
++(NSDate*)dateFromUTCString:(NSString*)utcString
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'+'HH:mm"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSDate *date = [dateFormatter dateFromString:utcString];
+    
+    return date;
+}
+
++ (NSString*)criticalityFromIndex:(NSInteger)index
+{
+    switch (index) {
+        case 1:
+            return @"Important issue";
+            break;
+        case 2:
+            return @"Critical issue";
+            break;
+        case 3:
+            return @"Burning issue";
+            
+        default:
+            return @"Important issue";
+            break;
+    }
+}
+
++ (NSString*)easeFromIndex:(NSInteger)index
+{
+    switch (index) {
+        case 1:
+            return @"Easy action";
+            break;
+        case 2:
+            return @"More effort";
+            break;
+        case 3:
+            return @"Serious activism";
+            
+        default:
+            return @"Easy action";
+            break;
+    }
+}
+
 +(NSString*)dateStringForTodayMidnight
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
