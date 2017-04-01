@@ -21,6 +21,7 @@
 
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity
 {
+    
     self.opportunityID = opportunity.opportunityID;
     
     self.actionTitle.text = opportunity.title;
@@ -109,7 +110,24 @@
         [self.btn_action setAttributedTitle:string forState:UIControlStateNormal];
     }
     
+    // title
+    self.date_container.layer.cornerRadius = 15.0;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"MMM dd";
+    
+    self.lb_summary.text = opportunity.summary;
+    
+    if (!actedOn)
+    {
+        self.lb_date_title.text = @"ACT TODAY";
+        self.lb_date.text = [[dateFormatter stringFromDate:[NSDate date]] uppercaseString];
+    }
+    else
+    {
+        self.lb_date_title.text = @"ACTED ON";
+        self.lb_date.text = [[dateFormatter stringFromDate:opportunity.actedOnDate] uppercaseString];
+    }
 }
 
 - (IBAction)takeAction:(id)sender

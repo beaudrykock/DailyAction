@@ -22,6 +22,10 @@
 
 @interface OpportunityCard : UIView
 
+@property (nonatomic, strong) IBOutlet UILabel *lb_summary;
+@property (nonatomic, strong) IBOutlet UILabel *lb_date_title;
+@property (nonatomic, strong) IBOutlet UILabel *lb_date;
+@property (nonatomic, strong) IBOutlet UIView *date_container;
 @property (nonatomic, strong) IBOutlet UIImageView *iv_actedOn;
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSNumber *actionType;

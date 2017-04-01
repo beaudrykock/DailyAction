@@ -10,13 +10,12 @@
 #import "OpportunityCard.h"
 #import "OpportunityDataManager.h"
 #import "Constants.h"
-#import "ActionDate.h"
 #import "UserDataManager.h"
 #import "CallScript.h"
+#import "ActionFeedback.h"
 
-@interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate, CallScriptDelegate, OpportunityCardDelegate>
+@interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate, CallScriptDelegate, OpportunityCardDelegate, ActionFeedbackDelegate>
 
-@property (nonatomic, assign) NSInteger titleViewPage;
 @property (nonatomic, assign) BOOL scrollStarted;
 @property (nonatomic, assign) BOOL lazyLoaded;
 @property (nonatomic, assign) float contentOffset;
@@ -27,13 +26,11 @@
 @property (nonatomic, strong) NSMutableDictionary *opportunityViewTags;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, assign) NSInteger lastPage;
-@property (nonatomic, strong) ActionDate *titleView;
 @property (nonatomic, strong) IBOutlet UIButton *btn_changeLocation;
 @property (nonatomic, strong) UIAlertAction *okAction;
 @property (nonatomic, strong) IBOutlet UILabel *lb_votingLocation;
 @property (nonatomic, strong) CallScript *callScriptView;
-
-
-
+@property (nonatomic, assign) id delegate;
+@property (nonatomic, strong) ActionFeedback *feedback;
 @end
 

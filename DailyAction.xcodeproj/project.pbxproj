@@ -24,10 +24,10 @@
 		9FC29C0C1E6E07E20070C43F /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC29C0B1E6E07E20070C43F /* Opportunity.m */; };
 		9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */; };
 		A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A90EB0F91E6E63A1009078ED /* Utilities.m */; };
+		A947BE5B1E8F516400E5B867 /* ActionFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */; };
+		A947BE5E1E8F517900E5B867 /* ActionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = A947BE5D1E8F517900E5B867 /* ActionFeedback.m */; };
 		A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E28DEA1E889FA00013DB6E /* CallScript.m */; };
 		A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */; };
-		A9F4D8B11E78F6CD005A8DE3 /* ActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B01E78F6CD005A8DE3 /* ActionDate.m */; };
-		A9F4D8B31E78F6E3005A8DE3 /* ActionDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F4D8B21E78F6E3005A8DE3 /* ActionDateView.xib */; };
 		A9F4D8B61E7F1434005A8DE3 /* CloudDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */; };
 		A9F4D8B91E7F1485005A8DE3 /* ActionDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B81E7F1485005A8DE3 /* ActionDataManager.m */; };
 		C0122A38AF142BF90D8AC1FE /* Pods_DailyAction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A6015893ED16873D187425 /* Pods_DailyAction.framework */; };
@@ -66,12 +66,12 @@
 		A90EB0F81E6E63A1009078ED /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		A90EB0F91E6E63A1009078ED /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		A90EB0FB1E6E63BD009078ED /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionFeedbackView.xib; sourceTree = "<group>"; };
+		A947BE5C1E8F517900E5B867 /* ActionFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionFeedback.h; sourceTree = "<group>"; };
+		A947BE5D1E8F517900E5B867 /* ActionFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionFeedback.m; sourceTree = "<group>"; };
 		A9E28DE91E889FA00013DB6E /* CallScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallScript.h; sourceTree = "<group>"; };
 		A9E28DEA1E889FA00013DB6E /* CallScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallScript.m; sourceTree = "<group>"; };
 		A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallScriptView.xib; sourceTree = "<group>"; };
-		A9F4D8AF1E78F6CD005A8DE3 /* ActionDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDate.h; sourceTree = "<group>"; };
-		A9F4D8B01E78F6CD005A8DE3 /* ActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDate.m; sourceTree = "<group>"; };
-		A9F4D8B21E78F6E3005A8DE3 /* ActionDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionDateView.xib; sourceTree = "<group>"; };
 		A9F4D8B41E7F1434005A8DE3 /* CloudDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudDataManager.h; sourceTree = "<group>"; };
 		A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudDataManager.m; sourceTree = "<group>"; };
 		A9F4D8B71E7F1485005A8DE3 /* ActionDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDataManager.h; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 				9F7C14A01E6E16EB00E21B16 /* OpportunityCard.h */,
 				9F7C14A11E6E16EB00E21B16 /* OpportunityCard.m */,
 				9FD45EFB1E70DF280027AA3D /* OpportunityCardView.xib */,
-				A9F4D8AF1E78F6CD005A8DE3 /* ActionDate.h */,
-				A9F4D8B01E78F6CD005A8DE3 /* ActionDate.m */,
-				A9F4D8B21E78F6E3005A8DE3 /* ActionDateView.xib */,
+				A947BE5C1E8F517900E5B867 /* ActionFeedback.h */,
+				A947BE5D1E8F517900E5B867 /* ActionFeedback.m */,
+				A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */,
 				A9E28DE91E889FA00013DB6E /* CallScript.h */,
 				A9E28DEA1E889FA00013DB6E /* CallScript.m */,
 				A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */,
@@ -275,8 +275,8 @@
 				A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */,
 				9FAE76BD1E61129200EE1378 /* Assets.xcassets in Resources */,
 				9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */,
-				A9F4D8B31E78F6E3005A8DE3 /* ActionDateView.xib in Resources */,
 				9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */,
+				A947BE5B1E8F516400E5B867 /* ActionFeedbackView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,8 +359,8 @@
 				A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */,
 				9F7C149A1E6E135400E21B16 /* Issue.m in Sources */,
 				9F7C14A21E6E16EB00E21B16 /* OpportunityCard.m in Sources */,
-				A9F4D8B11E78F6CD005A8DE3 /* ActionDate.m in Sources */,
 				9F7C14A71E6E1C4000E21B16 /* OpportunityDataManager.m in Sources */,
+				A947BE5E1E8F517900E5B867 /* ActionFeedback.m in Sources */,
 				9FAE76B51E61129200EE1378 /* AppDelegate.m in Sources */,
 				A9F4D8B61E7F1434005A8DE3 /* CloudDataManager.m in Sources */,
 				A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */,

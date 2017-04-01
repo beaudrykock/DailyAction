@@ -60,49 +60,6 @@
     }
 }
 
-
-- (void)refreshTitleView
-{
-    if (!self.titleView)
-    {
-        self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"ActionDateView" owner:self options:nil] objectAtIndex:0];
-        self.titleView.date_container.layer.cornerRadius = 15.0;
-        
-        CGRect frame = self.titleView.frame;
-        frame.origin.x = (self.view.frame.size.width-self.titleView.frame.size.width)/2.0;
-        frame.origin.y = 26.0;
-        self.titleView.frame = frame;
-        
-        [self.view addSubview:self.titleView];
-    }
-    
-    // parameterize title view
-    RLMResults<Opportunity*> *opportunities = [[OpportunityDataManager sharedInstance] actedOnOpportunities];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MMM dd";
-    
-    Opportunity *opp;
-    
-    if ([self currentPage] == opportunities.count)
-    {
-        opp = [[OpportunityDataManager sharedInstance] todaysOpportunity];
-    }
-    else
-    {
-        opp = [opportunities objectAtIndex:[self currentPage]];
-    }
-    
-    self.currentlyDisplayedOpportunityID = opp.opportunityID;
-    
-    self.titleView.lb_title.text = opp.summary;
-    
-    if (!opp.actedOn)
-        self.titleView.lb_date.text = [dateFormatter stringFromDate:[NSDate date]];
-    else
-        self.titleView.lb_date.text = [dateFormatter stringFromDate:opp.actedOnDate];
-}
-
 - (void)refreshOpportunityViews
 {
     NSInteger oppCount = [[OpportunityDataManager sharedInstance] countOfActedOnOpportunities]; // 1 extra for today's, if 0 or otherwise less than OPPORTUNITIES_LIMIT
@@ -152,10 +109,7 @@
 
     NSLog(@"page = %lu", [self currentPage]);
     NSLog(@"last page = %lu", self.lastPage);
-    
-    
-    // position
-    [self refreshTitleView];
+
 }
 
 # pragma mark - Scrolling
@@ -175,12 +129,8 @@
 //    NSLog(@"lazyLoaded = %d", self.lazyLoaded);
     
     if ([self currentPage] != self.lastPage && !self.lazyLoaded)
-    {
-        self.titleViewPage = [self currentPage];
-        
+    {        
         self.lazyLoaded = YES;
-        
-        [self refreshTitleView];
     }
 }
 
@@ -199,10 +149,6 @@
 //    NSLog(@"page = %lu", [self currentPage]);
 //    NSLog(@"last page = %lu", self.lastPage);
 //    NSLog(@"title view page = %lu", self.titleViewPage);
-    
-    // final check to make sure we didn't return to the same page we started at
-    if (self.titleViewPage != [self currentPage])
-        [self refreshTitleView];
     
     if ([self.opportunityViewTags objectForKey: [NSNumber numberWithInteger: [self currentPage]-1]]) {
         
@@ -554,6 +500,53 @@
             });
         });
     }
+}
+
+- (void)showActionFeedback
+{
+    self.feedback = [[[NSBundle mainBundle] loadNibNamed:@"ActionFeedbackView" owner:self options:nil] objectAtIndex:0];
+    self.feedback.delegate = self;
+    Opportunity *opp = [[OpportunityDataManager sharedInstance] opportunityWithID:self.currentlyDisplayedOpportunityID];
+    
+    [self.feedback setupWithOpportunity:opp];
+    
+    CGRect frame = self.feedback.frame;
+    frame.origin.x = (self.view.frame.size.width-self.feedback.frame.size.width)/2.0;
+    frame.origin.y = self.view.frame.size.height;
+    self.feedback.frame = frame;
+    
+    [self.view addSubview:self.feedback];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
+        oppCard.alpha = 0.0;
+        CGRect frame = self.feedback.frame;
+        frame.origin.y = self.opportunityScrollView.frame.origin.y;
+        self.feedback.frame = frame;
+    }];
+}
+
+- (void)provideFeedbackWithIndex:(NSInteger)index
+{
+    // TODO record feedback for action for user
+    
+    
+    // close action feedback
+    [self hideActionFeedback];
+}
+
+- (void)hideActionFeedback
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame = self.feedback.frame;
+        frame.origin.y = self.view.frame.size.height;
+        self.feedback.frame = frame;
+        OpportunityCard *oppCard = self.opportunityViews[[self currentPage]];
+        oppCard.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [self.feedback removeFromSuperview];
+        _feedback = nil;
+    }];
 }
 
 #pragma mark - Housekeeping
