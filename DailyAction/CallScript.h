@@ -20,11 +20,13 @@
 - (void)cancelScript;
 - (void)makeCall;
 - (void)showUpdateNameModal;
+- (void)doneWithCall;
 
 @end
 
 @interface CallScript : UIView <UITextViewDelegate>
 
+@property (nonatomic, assign) BOOL buttonStateAsDone;
 @property (nonatomic, strong) IBOutlet UIView *titleContainer;
 @property (nonatomic, strong) IBOutlet UIView *scriptContainer;
 @property (nonatomic, strong) IBOutlet UILabel *lb_actionTitle;
@@ -37,5 +39,6 @@
 
 - (void)parameterizeWithOpportunity:(Opportunity*)opportunity;
 - (void)generateScript;
+- (void)setButtonToDone;
 
 @end

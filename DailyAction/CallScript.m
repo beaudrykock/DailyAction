@@ -53,6 +53,12 @@
     [self generateScript];
 }
 
+- (void)setButtonToDone
+{
+    [self.btn_takeAction setTitle:@"Done with call" forState:UIControlStateNormal];
+    self.buttonStateAsDone = YES;
+}
+
 - (void)generateScript
 {
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.opportunityID];
@@ -131,7 +137,10 @@
 
 - (IBAction)call:(id)sender
 {
-    [self.delegate makeCall];
+    if (!self.buttonStateAsDone)
+        [self.delegate makeCall];
+    else
+        [self.delegate doneWithCall];
 }
 
 - (IBAction)cancel:(id)sender

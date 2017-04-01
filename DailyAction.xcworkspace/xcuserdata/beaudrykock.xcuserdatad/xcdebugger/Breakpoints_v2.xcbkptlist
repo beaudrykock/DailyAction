@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DailyAction/MainViewController.m"
-            timestampString = "512774527.380465"
+            timestampString = "512775558.795943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "-makeCall"
             landmarkType = "7">
          </BreakpointContent>

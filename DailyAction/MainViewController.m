@@ -478,27 +478,14 @@
         [UIApplication.sharedApplication openURL:phoneUrl options:@{} completionHandler:^(BOOL success) {
             if (success)
             {
-                // mark as done
-                [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
-                
-                // TODO - show post-action interface
-                [self showActionFeedback];
-                
-                [self refreshOpportunityViews];
+                [self.callScriptView setButtonToDone];
             }
         }];
     } else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
         [UIApplication.sharedApplication openURL:phoneFallbackUrl options:@{} completionHandler:^(BOOL success) {
             if (success)
             {
-                // mark as done
-                [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
-                
-                // TODO - show post-action interface
-                [self showActionFeedback];
-                
-                [self refreshOpportunityViews];
-            }
+                [self.callScriptView setButtonToDone];            }
         }];
     } else {
         // device cannot do phone calls
@@ -508,17 +495,20 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 
-                // test
-                // mark as done
-                [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
-                
-                // TODO - show post-action interface
-                 [self showActionFeedback];
-                
-                [self refreshOpportunityViews];
             });
         });
     }
+}
+
+- (void)doneWithCall
+{
+    // mark as done
+    [[OpportunityDataManager sharedInstance] markOpportunityAsActedOnWithID:self.currentlyDisplayedOpportunityID];
+    
+    [self cancelScript];
+    
+    [self showActionFeedback];
+    
 }
 
 - (void)showActionFeedback
@@ -549,9 +539,12 @@
 {
     // TODO record feedback for action for user
     
-    
     // close action feedback
     [self hideActionFeedback];
+    
+    // refresh views
+    [self refreshOpportunityViews];
+
 }
 
 - (void)hideActionFeedback
