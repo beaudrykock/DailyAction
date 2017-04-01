@@ -32,6 +32,7 @@
 		A90EB0FA1E6E63A1009078ED /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A90EB0F91E6E63A1009078ED /* Utilities.m */; };
 		A947BE5B1E8F516400E5B867 /* ActionFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */; };
 		A947BE5E1E8F517900E5B867 /* ActionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = A947BE5D1E8F517900E5B867 /* ActionFeedback.m */; };
+		A9D721211E906637007B3173 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9D721201E906637007B3173 /* GoogleService-Info.plist */; };
 		A9E28DEB1E889FA00013DB6E /* CallScript.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E28DEA1E889FA00013DB6E /* CallScript.m */; };
 		A9E28DED1E889FAE0013DB6E /* CallScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */; };
 		A9F4D8B61E7F1434005A8DE3 /* CloudDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F4D8B51E7F1434005A8DE3 /* CloudDataManager.m */; };
@@ -81,6 +82,7 @@
 		A947BE5A1E8F516400E5B867 /* ActionFeedbackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionFeedbackView.xib; sourceTree = "<group>"; };
 		A947BE5C1E8F517900E5B867 /* ActionFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionFeedback.h; sourceTree = "<group>"; };
 		A947BE5D1E8F517900E5B867 /* ActionFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionFeedback.m; sourceTree = "<group>"; };
+		A9D721201E906637007B3173 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9E28DE91E889FA00013DB6E /* CallScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallScript.h; sourceTree = "<group>"; };
 		A9E28DEA1E889FA00013DB6E /* CallScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallScript.m; sourceTree = "<group>"; };
 		A9E28DEC1E889FAE0013DB6E /* CallScriptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallScriptView.xib; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				9FAE76BC1E61129200EE1378 /* Assets.xcassets */,
 				9FAE76BE1E61129200EE1378 /* LaunchScreen.storyboard */,
 				9FAE76C11E61129200EE1378 /* Info.plist */,
+				A9D721201E906637007B3173 /* GoogleService-Info.plist */,
 				9FAE76B01E61129200EE1378 /* Supporting Files */,
 			);
 			path = DailyAction;
@@ -257,7 +260,6 @@
 				9FAE76AB1E61129200EE1378 /* Resources */,
 				E9ACF64BA84A3492FBA82D79 /* [CP] Embed Pods Frameworks */,
 				6129220AC7831E6C25552B7F /* [CP] Copy Pods Resources */,
-				9FC29C021E6DFAD20070C43F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -313,6 +315,7 @@
 				9FAE76BB1E61129200EE1378 /* Main.storyboard in Resources */,
 				9FD45EFC1E70DF280027AA3D /* OpportunityCardView.xib in Resources */,
 				A947BE5B1E8F516400E5B867 /* ActionFeedbackView.xib in Resources */,
+				A9D721211E906637007B3173 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,19 +351,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DailyAction/Pods-DailyAction-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		9FC29C021E6DFAD20070C43F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e8b60c2295893496a6c9dd6353a7b1be4044a213 f722ab468ed4342807b5e020b4ce351d3e8c49cc523f1498e31ce97492d271c2";
 		};
 		E9ACF64BA84A3492FBA82D79 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

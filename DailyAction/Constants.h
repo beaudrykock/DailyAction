@@ -55,6 +55,7 @@
 #define OPPORTUNITIES_LIMIT 7
 #define AUTO @"auto"
 #define MANUAL @"manual"
+#define CONTENT_CREATION_COUNT 4 // number of different content updates expected
 
 // OTHER IMAGES
 

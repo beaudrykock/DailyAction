@@ -39,7 +39,10 @@
     
     // subscribe to notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserVotingLocation) name:UPDATED_USER_LOCATION object:nil];
-  
+
+    [[OpportunityDataManager sharedInstance] addObserver:self forKeyPath:@"contentAvailable" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+
+    
     [[OpportunityDataManager sharedInstance] addObserver:self forKeyPath:@"contentUpdated" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     if ([[OpportunityDataManager sharedInstance] contentAvailable])
@@ -51,13 +54,22 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     
   if ([keyPath isEqualToString:@"contentUpdated"]) {
-        if ([[OpportunityDataManager sharedInstance] contentUpdated])
+        if ([[OpportunityDataManager sharedInstance] contentUpdated] &&
+            [[OpportunityDataManager sharedInstance] allContentCreationCompleted])
         {
             [self refreshOpportunityViews];
             
             [OpportunityDataManager sharedInstance].contentUpdated = NO;
         }
     }
+  else if ([keyPath isEqualToString:@"contentAvailable"]) {
+      if ([[OpportunityDataManager sharedInstance] contentAvailable])
+      {
+          [self refreshOpportunityViews];
+          
+          [OpportunityDataManager sharedInstance].contentUpdated = NO;
+      }
+  }
 }
 
 - (void)refreshOpportunityViews

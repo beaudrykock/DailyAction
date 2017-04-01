@@ -14,6 +14,7 @@
 #import "CallScript.h"
 #import "ActionFeedback.h"
 #import <Google/Analytics.h>
+#import "CloudDataManager.h"
 
 @interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate, CallScriptDelegate, OpportunityCardDelegate, ActionFeedbackDelegate>
 

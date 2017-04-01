@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) BOOL contentAvailable;
 @property (nonatomic, assign) BOOL contentUpdated;
+@property (nonatomic, assign) NSInteger contentCreationCount;
 
 - (Opportunity*)opportunityWithID:(NSNumber*)opportunityID;
 - (void)createOpportunitiesWithData:(NSDictionary*)opportunities;
@@ -33,5 +34,7 @@
 - (PhoneAction*)phoneActionForActionWithID:(NSNumber*)actionID;
 - (Action*)actionForOpportunityWithID:(NSNumber*)opportunityID;
 - (void)markOpportunityAsActedOnWithID:(NSNumber*)opportunityID;
+- (BOOL)allContentCreationCompleted;
+- (void)checkContentAvailability;
 
 @end

@@ -13,10 +13,13 @@
 #import "EmailAction.h"
 #import "Issue.h"
 #import "AFNetworking.h"
+#import "Constants.h"
 
 @interface CloudDataManager : NSObject
 
 + (CloudDataManager *) sharedInstance;
+
+
 
 //- (void)postUDID;
 //- (void)loginUserWithUsername:(NSString*)username andPassword:(NSString*)password onSuccess:(void (^)(void))success onFailure:(void (^)(NSError *))failure;

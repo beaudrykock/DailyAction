@@ -27,7 +27,16 @@
 
 - (void)checkContentAvailability
 {
-    self.contentAvailable = [self opportunityAvailable];
+    if ([self allContentCreationCompleted])
+    {
+        self.contentAvailable = [self opportunityAvailable];
+    }
+    // if no internet, or content creation not being undertaken for some
+    // reason, check the state of opportunity
+    else
+    {
+        self.contentAvailable = [self opportunityAvailable] && [self actionAvailable];
+    }
 }
 
 // most imminent opportunity that hasn't yet been acted on
@@ -62,6 +71,15 @@
     RLMResults<Opportunity*> *opportunities = [[Opportunity objectsInRealm:realm withPredicate:[NSPredicate predicateWithFormat:@"dueDate >= %@ AND actedOn = NO", [NSDate date]]] sortedResultsUsingKeyPath:@"dueDate" ascending:NO];
     
     return opportunities.count>0 || [self countOfActedOnOpportunities] >0;
+}
+                                                                
+- (BOOL)actionAvailable
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    RLMResults<Action*> *actions = [Action allObjectsInRealm:realm];
+    
+    return actions.count>0;
 }
 
 - (RLMResults<Opportunity*>*)actedOnOpportunities
@@ -161,7 +179,6 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     BOOL freshContent = NO;
-    
     for (NSDictionary *opportunity in opportunities)
     {
         NSNumber *oppID = opportunity[K_OPPORTUNITY_ID];
@@ -189,11 +206,12 @@
             [realm beginWriteTransaction];
             [realm addObject:newOpp];
             [realm commitWriteTransaction];
-            
+           
             freshContent = YES;
         }
     }
     
+    self.contentCreationCount++;
     self.contentUpdated = freshContent;
     
     // diagnostics
@@ -204,12 +222,17 @@
     }
 }
 
+- (BOOL)allContentCreationCompleted
+{
+    return self.contentCreationCount == CONTENT_CREATION_COUNT;
+}
+
 - (void)createActionsWithData:(NSDictionary*)actions
 {
     NSLog(@"Creating actions");
     
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
+        BOOL freshContent = NO;
     for (NSDictionary *action in actions)
     {
         NSNumber *actionID = action[K_ACTION_ID];
@@ -228,9 +251,14 @@
             [realm beginWriteTransaction];
             [realm addObject:newAction];
             [realm commitWriteTransaction];
+            
+            freshContent = YES;
         }
     }
     
+    self.contentCreationCount++;
+    self.contentUpdated = freshContent;
+
     // diagnostics
     RLMResults<Action*> *actionDiags = [Action allObjects];
     for (Action *action in actionDiags)
@@ -244,7 +272,7 @@
     NSLog(@"Creating email actions");
     
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
+    BOOL freshContent = NO;
     for (NSDictionary *emailAction in emailActions)
     {
         NSNumber *emailActionID = emailAction[K_EMAIL_ACTION_ID];
@@ -264,9 +292,12 @@
             [realm beginWriteTransaction];
             [realm addObject:newAction];
             [realm commitWriteTransaction];
+            
+           freshContent = YES;
         }
     }
-    
+    self.contentCreationCount++;
+    self.contentUpdated = freshContent;
     // diagnostics
     RLMResults<EmailAction*> *actionDiags = [EmailAction allObjects];
     for (Action *action in actionDiags)
@@ -280,7 +311,7 @@
     NSLog(@"Creating phone actions");
     
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
+    BOOL freshContent = NO;
     for (NSDictionary *phoneAction in phoneActions)
     {
         NSNumber *phoneActionID = phoneAction[K_PHONE_ACTION_ID];
@@ -300,8 +331,11 @@
             [realm beginWriteTransaction];
             [realm addObject:newAction];
             [realm commitWriteTransaction];
+           freshContent = YES;
         }
     }
+    self.contentCreationCount++;
+    self.contentUpdated = freshContent;
     
     // diagnostics
     RLMResults<PhoneAction*> *actionDiags = [PhoneAction allObjects];

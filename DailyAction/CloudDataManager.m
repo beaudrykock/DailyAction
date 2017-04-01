@@ -24,7 +24,9 @@
         if (status == AFNetworkReachabilityStatusReachableViaWiFi ||
             status == AFNetworkReachabilityStatusReachableViaWWAN)
         {
-            // TEST
+            // reset count
+            [OpportunityDataManager sharedInstance].contentCreationCount = 0;
+            
             [self downloadOpportunitiesWithDataOnSuccess:^(NSDictionary *opportunitiesDictionary) {
                 NSLog(@"Successfully downloaded opportunities");
                 [[OpportunityDataManager sharedInstance] createOpportunitiesWithData:opportunitiesDictionary];
