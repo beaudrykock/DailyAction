@@ -13,4 +13,5 @@ target 'DailyAction' do
   pod 'Crashlytics'
   pod 'MBProgressHUD'
   pod 'INTULocationManager'
+  pod 'Google/Analytics'
 end
