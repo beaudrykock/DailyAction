@@ -13,6 +13,7 @@
 #import "UserDataManager.h"
 #import "CallScript.h"
 #import "ActionFeedback.h"
+#import <Google/Analytics.h>
 
 @interface MainViewController : UIViewController <UIScrollViewDelegate, MFMailComposeViewControllerDelegate, CallScriptDelegate, OpportunityCardDelegate, ActionFeedbackDelegate>
 

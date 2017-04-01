@@ -9,8 +9,6 @@ target 'DailyAction' do
   pod 'AFNetworking', '~> 3.1'
   pod 'Realm', '~> 2.4'
   pod 'SBJson', '~> 4.0.1'
-  pod 'Fabric'
-  pod 'Crashlytics'
   pod 'MBProgressHUD'
   pod 'INTULocationManager'
   pod 'Google/Analytics'

@@ -139,7 +139,11 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Interaction"
+                                                          action:@"Swiped opportunity cards"
+                                                           label:@""
+                                                           value:@1] build]];
 //    NSLog(@"scroll decelerated");
 //    NSLog(@"page = %lu", [self currentPage]);
 //    NSLog(@"last page = %lu", self.lastPage);
@@ -228,6 +232,12 @@
 
 - (IBAction)changeLocation:(id)sender
 {
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Interaction"
+                                                          action:@"Change location"
+                                                           label:@""
+                                                           value:@1] build]];
+    
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"Where do you vote?"
                                           message:@"Enter a 5-digit zipcode"
@@ -349,6 +359,12 @@
 
 - (void)composeEmail
 {
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Action Taken"
+                                                          action:@"E-mail"
+                                                           label:@""
+                                                           value:@1] build]];
+    
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.currentlyDisplayedOpportunityID];
     
     if (![MFMailComposeViewController canSendMail]) {
@@ -465,7 +481,13 @@
 }
 
 - (void)makeCall
-{   
+{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Action Taken"
+                                                          action:@"Phone call"
+                                                           label:@""
+                                                           value:@1] build]];
+    
     Action *action = [[OpportunityDataManager sharedInstance] actionForOpportunityWithID:self.currentlyDisplayedOpportunityID];
     
     // get the subaction
@@ -562,6 +584,13 @@
 }
 
 #pragma mark - Housekeeping
+- (void)viewWillAppear:(BOOL)animated
+{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Main view"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
