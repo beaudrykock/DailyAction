@@ -10,6 +10,7 @@
 #import "Utilities.h"
 #import "UserDataManager.h"
 #import "CloudDataManager.h"
+#import <BuddyBuildSDK/BuddyBuildSDK.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [BuddyBuildSDK setup];
+    
     // Override point for customization after application launch.
     [Fabric with:@[[Crashlytics class]]];
     
