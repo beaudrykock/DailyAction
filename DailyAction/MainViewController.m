@@ -42,12 +42,24 @@
 
     [[OpportunityDataManager sharedInstance] addObserver:self forKeyPath:@"contentAvailable" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 
-    
     [[OpportunityDataManager sharedInstance] addObserver:self forKeyPath:@"contentUpdated" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     if ([[OpportunityDataManager sharedInstance] contentAvailable])
     {
         [self refreshOpportunityViews];
+    }
+    else
+    {
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            if (status == AFNetworkReachabilityStatusNotReachable)
+            {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.label.text = @"We require access to the internet to download content";
+                dispatch_after(5.0, dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
+            }
+        }];
     }
 }
 
@@ -381,11 +393,8 @@
     if (![MFMailComposeViewController canSendMail]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = @"Please set up e-mail";
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            // Do something...
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            });
+        dispatch_after(5.0, dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
         return;
     }
@@ -524,13 +533,9 @@
         // device cannot do phone calls
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = @"Phone functions not available on your device";
-        dispatch_after(2.5, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                
-            });
-        });
-    }
+        dispatch_after(3.0, dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });    }
 }
 
 - (void)doneWithCall
