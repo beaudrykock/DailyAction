@@ -4,14 +4,14 @@
 
 #import "Utilities.h"
 
-#define ud_dataReadDate @"dataReadDate"
+#define ud_dataDownloadDate @"dataDownloadDate"
 #define ud_uuid @"uuid"
 #define ud_udid @"udid"
 #define ud_latitude @"latitude"
 #define ud_longitude @"longitude"
 #define ud_launchCount @"launchCount"
 #define ud_sharePromptShown @"sharePromptShown"
-#define c_secondsInOneWeek 604800
+#define c_secondsInOneDay 86400
 
 @implementation Utilities
 
@@ -227,22 +227,22 @@
     return currentUUID;
 }
 
-+(void)recordDataRead
++(void)recordDataDownload
 {
     NSDate *date = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:ud_dataReadDate];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:ud_dataDownloadDate];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(BOOL)shouldRefreshData
 {
-    NSDate *lastRefreshed = (NSDate*)[[NSUserDefaults standardUserDefaults] objectForKey:ud_dataReadDate];
+    NSDate *lastRefreshed = (NSDate*)[[NSUserDefaults standardUserDefaults] objectForKey:ud_dataDownloadDate];
     
     if (lastRefreshed)
     {
         NSDate *today = [NSDate date];
         
-        return ([today timeIntervalSinceDate:lastRefreshed] > (c_secondsInOneWeek*4));
+        return ([today timeIntervalSinceDate:lastRefreshed] > c_secondsInOneDay);
         
     }
     return YES;

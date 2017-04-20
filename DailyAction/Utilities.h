@@ -15,7 +15,7 @@
 + (NSDate*)dateFromUTCString:(NSString*)utcString;
 + (void)incrementLaunchCount;
 + (NSInteger)launchCount;
-+ (void)recordDataRead;
++ (void)recordDataDownload;
 + (BOOL)shouldRefreshData;
 + (NSString*)getUUID;
 + (CLLocation*)lastUserLocation;

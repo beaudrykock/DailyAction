@@ -7,13 +7,15 @@
 // FONTS
 
 // URLs
-#define URL_base @"https://api.kumulos.com/v1/data/"
-#define URL_opportunity @"opportunity"
+#define URL_base @"https://progressivemap.herokuapp.com/"
+#define URL_opportunity @"opportunities"
 #define URL_issue @"issue"
 #define URL_action @"action"
 #define URL_email_action @"email_action"
 #define URL_phone_action @"phone_action"
 #define URL_user @"user"
+#define PM_username @"progressivemap"
+#define PM_password @"Progr3ssiveMap123!"
 
 // SEGUES
 

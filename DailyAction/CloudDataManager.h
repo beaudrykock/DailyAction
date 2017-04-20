@@ -19,7 +19,7 @@
 
 + (CloudDataManager *) sharedInstance;
 
-
+- (void)refresh;
 
 //- (void)postUDID;
 //- (void)loginUserWithUsername:(NSString*)username andPassword:(NSString*)password onSuccess:(void (^)(void))success onFailure:(void (^)(NSError *))failure;

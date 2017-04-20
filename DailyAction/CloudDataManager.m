@@ -45,11 +45,19 @@
             }];
             
 //            [self syncCache];
+            
+            [Utilities recordDataDownload];
         }
     }];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
+}
+
+- (void)refresh
+{
+    if ([Utilities shouldRefreshData])
+        [self setup];
 }
 
 - (AFHTTPSessionManager*)newSessionManager
@@ -58,7 +66,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 //    [manager.requestSerializer setValue:KUMULOS_API_KEY forHTTPHeaderField:@"Username"];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:KUMULOS_API_KEY password:@"password"];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:PM_username password:PM_password];
 //    AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
 //    policy.allowInvalidCertificates = YES;
 //    [policy setValidatesDomainName:NO];
